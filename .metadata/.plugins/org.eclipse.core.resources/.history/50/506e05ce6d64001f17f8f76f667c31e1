@@ -64,11 +64,8 @@ int is_blue_button_pressed()
 	// register_reading gets data from IDR (Input Data Register)
 	uint32_t register_reading = GPIOC->IDR;
 
-	//GPIO_TypeDef* 	b1_gpio		= GPIOC;	// the b1_gpio pointer is assigned to the GPIOC port
-
-	uint16_t		b1_pin_nbr	= 13;		// sets the pin number to 13.
-
-	// calculates the pin mask for the b1 pin by shifting 0x01 b1_pin_nbr positions to the left.
+	GPIO_TypeDef* 	b1_gpio		= GPOIC;	// the b1_gpio pointer is assigned to the GPIOC port
+	uint16_t		b1_pin_nbr	= 13;
 	uint16_t		b1_pin		= 0x01 << b1_pin_nbr;
 
 	return (register_reading & b1_pin) == 0;
@@ -112,11 +109,11 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  //int pressed = is_blue_button_pressed();
+  int pressed = is_blue_button_pressed();
   while (1)
   {
-	  //pressed = HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin);
-	  if(is_blue_button_pressed())
+	  pressed = HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin);
+	  if(pressed)
 	  {
 		  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_SET);
 	  }

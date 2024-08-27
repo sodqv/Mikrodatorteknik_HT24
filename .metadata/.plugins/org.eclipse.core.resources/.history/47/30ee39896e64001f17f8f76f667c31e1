@@ -112,11 +112,11 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  //int pressed = is_blue_button_pressed();
+  int pressed = is_blue_button_pressed();
   while (1)
   {
-	  //pressed = HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin);
-	  if(is_blue_button_pressed())
+	  pressed = HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin);
+	  if(pressed)
 	  {
 		  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_SET);
 	  }

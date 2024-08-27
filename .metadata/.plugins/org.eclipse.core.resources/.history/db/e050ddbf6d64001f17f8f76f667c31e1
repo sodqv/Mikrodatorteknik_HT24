@@ -51,28 +51,11 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
-int is_blue_button_pressed();
+
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
-// returns 1 if blue button is pressed
-// returns 0 if blue button isn't pressed
-int is_blue_button_pressed()
-{
-	// register_reading gets data from IDR (Input Data Register)
-	uint32_t register_reading = GPIOC->IDR;
-
-	//GPIO_TypeDef* 	b1_gpio		= GPIOC;	// the b1_gpio pointer is assigned to the GPIOC port
-
-	uint16_t		b1_pin_nbr	= 13;		// sets the pin number to 13.
-
-	// calculates the pin mask for the b1 pin by shifting 0x01 b1_pin_nbr positions to the left.
-	uint16_t		b1_pin		= 0x01 << b1_pin_nbr;
-
-	return (register_reading & b1_pin) == 0;
-}
 
 /* USER CODE END 0 */
 
@@ -112,11 +95,11 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  //int pressed = is_blue_button_pressed();
+  int pressed = 0;
   while (1)
   {
-	  //pressed = HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin);
-	  if(is_blue_button_pressed())
+	  pressed = HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin);
+	  if(pressed)
 	  {
 		  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_SET);
 	  }
