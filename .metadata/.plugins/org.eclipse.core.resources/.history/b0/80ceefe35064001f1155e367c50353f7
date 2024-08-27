@@ -105,8 +105,8 @@ int main(void)
 	  }
 	  else
 	  {
-		  GPIO_TypeDef* ld2_gpio	= GPIOA;
-		  uint16_t		ld2_pin_nbr = 5;
+		  GPIO_TypeDef* ld2_gpio	= GPIOE;
+		  uint16_t		ld2_pin_nbr = 13;
 		  uint16_t		ld2_pin		= 0x01 << ld2_pin_nbr;
 		  HAL_GPIO_WritePin(ld2_gpio, ld2_pin, GPIO_PIN_RESET);
 	  }
