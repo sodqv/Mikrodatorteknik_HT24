@@ -196,3 +196,18 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64 C:\Users\LP\JTH\Mikrod
 
 !ENTRY org.eclipse.cdt.core 1 0 2024-08-27 12:54:38.319
 !MESSAGE Indexed 'lab1_tarning' (22 sources, 82 headers) in 1.86 sec: 4,759 declarations; 22,720 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0073%)
+!SESSION 2024-08-30 12:35:58.472 -----------------------------------------------
+eclipse.buildId=Version 1.16.0
+java.version=17.0.11
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_GB
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-08-30 12:36:29.265
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-08-30 12:36:29.271
+!MESSAGE Log4j2 initialized with config file C:\Users\LP\JTH\Mikrodatorteknik\Mikrodatorteknik_HT24\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-08-30 12:36:34.983
+!MESSAGE Started RMI Server, listening on port 41337

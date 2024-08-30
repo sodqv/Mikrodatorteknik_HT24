@@ -52,7 +52,7 @@ static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
 int is_blue_button_pressed();
-void put_die_dots(uint8_t die_nbr);
+void put_die_dots();
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -91,103 +91,48 @@ void put_die_dots(uint8_t die_nbr)
 		case 1:
 			//DI_D PA11
 			//tänd
-			HAL_GPIO_WritePin(GPIOA, DI_D_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, GPIO_PIN_SET);
 
 			//släck
-			HAL_GPIO_WritePin(GPIOA, DI_A_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(GPIOA, DI_B_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(GPIOA, DI_C_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(GPIOA, DI_E_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(GPIOB, DI_F_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(GPIOB, DI_G_Pin, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);
 			break;
-
 
 		case 2:
 			//DI_F PB14 och DI_B PA9
-			//tänd
-			HAL_GPIO_WritePin(GPIOA, DI_B_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(GPIOB, DI_F_Pin, GPIO_PIN_SET);
-
-			//släck
-			HAL_GPIO_WritePin(GPIOA, DI_A_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(GPIOA, DI_C_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(GPIOA, DI_D_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(GPIOA, DI_E_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(GPIOB, DI_G_Pin, GPIO_PIN_RESET);
 			break;
-
 
 		case 3:
 			//DI_F PB14 och DI_D PA11 och DI_B PA9
-			//tänd
-			HAL_GPIO_WritePin(GPIOA, DI_B_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(GPIOB, DI_F_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(GPIOA, DI_D_Pin, GPIO_PIN_SET);
-
-			//släck
-			HAL_GPIO_WritePin(GPIOA, DI_A_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(GPIOA, DI_C_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(GPIOA, DI_E_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(GPIOB, DI_G_Pin, GPIO_PIN_RESET);
 			break;
-
 
 		case 4:
 			//DI_A PA8 och DI_B PA9 och DI_G PB15 och DI_F PB14
-			//tänd
-			HAL_GPIO_WritePin(GPIOA, DI_A_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(GPIOA, DI_B_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(GPIOB, DI_F_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(GPIOB, DI_G_Pin, GPIO_PIN_SET);
-
-			//släck
-			HAL_GPIO_WritePin(GPIOA, DI_C_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(GPIOA, DI_D_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(GPIOA, DI_E_Pin, GPIO_PIN_RESET);
 			break;
-
 
 		case 5:
 			//DI_A PA8 och DI_B PA9 och DI_G PB15 och DI_F PB14 och DI_D PA11
-			//tänd
-			HAL_GPIO_WritePin(GPIOA, DI_A_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(GPIOA, DI_B_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(GPIOA, DI_D_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(GPIOB, DI_F_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(GPIOB, DI_G_Pin, GPIO_PIN_SET);
-
-			//släck
-			HAL_GPIO_WritePin(GPIOA, DI_C_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(GPIOA, DI_E_Pin, GPIO_PIN_RESET);
 			break;
-
 
 		case 6:
 			//DI_A PA8 och DI_B PA9 och DI_G PB15 och DI_F PB14 och DI_C PA10 och DI_E PA12
-			//tänd
-			HAL_GPIO_WritePin(GPIOA, DI_A_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(GPIOA, DI_B_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(GPIOA, DI_C_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(GPIOA, DI_E_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(GPIOB, DI_F_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(GPIOB, DI_G_Pin, GPIO_PIN_SET);
-
-			//släck
-			HAL_GPIO_WritePin(GPIOA, DI_D_Pin, GPIO_PIN_RESET);
 			break;
-
 
 		default:
 			//tänd alla lampor if there's no case match
-			HAL_GPIO_WritePin(GPIOA, DI_A_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(GPIOA, DI_B_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(GPIOA, DI_C_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(GPIOA, DI_D_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(GPIOA, DI_E_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(GPIOB, DI_F_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(GPIOB, DI_G_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);
 	}
+
 }
 
 
@@ -233,7 +178,7 @@ int main(void)
 
   while (1)
   {
-	  uint8_t counter = 1;
+	  uint8_t counter;
 
 	  if(is_blue_button_pressed())
 	  {
