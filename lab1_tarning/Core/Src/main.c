@@ -230,19 +230,19 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-
+  uint8_t counter = 1;
   while (1)
   {
-	  uint8_t counter = 1;
+
 
 	  if(is_blue_button_pressed())
 	  {
 		  //when the button is pressed, loop the counter 1-6.
-		  for(counter = 1; ; counter++)
-		  {
-			  if (counter == 7){
-				  counter = 1;}
-		  }
+
+	  	  counter++;
+
+		  if (counter == 7){
+			  counter = 1;}
 
 
 		  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_SET);
@@ -250,8 +250,6 @@ int main(void)
 	  else
 	  {
 		  //when the button is released, send the counter value to the put_die_dots function
-		  put_die_dots(counter);
-
 
 		  GPIO_TypeDef* ld2_gpio	= GPIOA;
 		  uint16_t		ld2_pin_nbr = 5;
@@ -259,6 +257,7 @@ int main(void)
 		  HAL_GPIO_WritePin(ld2_gpio, ld2_pin, GPIO_PIN_RESET);
 	  }
 
+	  put_die_dots(counter);
 
     /* USER CODE END WHILE */
 
