@@ -1,0 +1,10 @@
+16:02:34 **** Incremental Build of configuration Debug for project lab1_endian ****
+make -j12 all 
+arm-none-eabi-size  lab1_endian.elf 
+   text	   data	    bss	    dec	    hex	filename
+   7804	     12	   1684	   9500	   251c	lab1_endian.elf
+Finished building: default.size.stdout
+ 
+
+16:02:34 Build Finished. 0 errors, 0 warnings. (took 196ms)
+
