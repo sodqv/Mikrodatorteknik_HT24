@@ -65,7 +65,7 @@ void put_on_sseg(uint8_t dec_nbr)
 {
 	if (dec_nbr >= 0 && dec_nbr <= 10)
 	{
-		GPIOC -> ODR = ~sseg[dec_nbr];
+		GPIOC -> ODR = sseg[dec_nbr];
 	}
 	else
 	{
