@@ -57,7 +57,7 @@ static void MX_USART2_UART_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
-int is_button_pressed()
+int is_blue_button_pressed()
 {
 	uint32_t register_reading = GPIOC->IDR;
 	uint16_t		b1_pin_nbr	= 13;
@@ -222,8 +222,6 @@ int main(void)
   while (1)
   {
 	  ev = ev_none;
-
-
 
     /* USER CODE END WHILE */
 

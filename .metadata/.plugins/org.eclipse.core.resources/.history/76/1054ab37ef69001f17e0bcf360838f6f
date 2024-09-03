@@ -223,8 +223,6 @@ int main(void)
   {
 	  ev = ev_none;
 
-
-
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

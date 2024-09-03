@@ -57,16 +57,6 @@ static void MX_USART2_UART_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
-int is_button_pressed()
-{
-	uint32_t register_reading = GPIOC->IDR;
-	uint16_t		b1_pin_nbr	= 13;
-	uint16_t		b1_pin		= 0x01 << b1_pin_nbr;
-
-	return (register_reading & b1_pin) == 0;
-}
-
-
 enum event
 {
 	ev_none,
@@ -80,11 +70,7 @@ enum state
 	s_init,
 	s_car_go,
 	s_pushed_wait,
-	s_cars_stopping,
-	s_cars_stand_still,
-	s_walk,
-	s_stop_walking,
-	s_cars_driving
+	s_cars_stopping
 };
 
 
@@ -122,46 +108,6 @@ void set_traffic_lights(enum state s)
 
 
 		case s_cars_stopping:
-			HAL_GPIO_WritePin(GPIOA, A_Pin, GPIO_PIN_RESET); //0
-			HAL_GPIO_WritePin(GPIOA, B_Pin, GPIO_PIN_SET);   //1
-			HAL_GPIO_WritePin(GPIOA, C_Pin, GPIO_PIN_RESET); //0
-
-			HAL_GPIO_WritePin(GPIOA, D_Pin, GPIO_PIN_SET);   //1
-			HAL_GPIO_WritePin(GPIOA, E_Pin, GPIO_PIN_RESET); //0
-			break;
-
-
-		case s_cars_stand_still:
-			HAL_GPIO_WritePin(GPIOA, A_Pin, GPIO_PIN_RESET); //1
-			HAL_GPIO_WritePin(GPIOA, B_Pin, GPIO_PIN_SET);   //0
-			HAL_GPIO_WritePin(GPIOA, C_Pin, GPIO_PIN_RESET); //0
-
-			HAL_GPIO_WritePin(GPIOA, D_Pin, GPIO_PIN_SET);   //1
-			HAL_GPIO_WritePin(GPIOA, E_Pin, GPIO_PIN_RESET); //0
-			break;
-
-
-		case s_walk:
-			HAL_GPIO_WritePin(GPIOA, A_Pin, GPIO_PIN_RESET); //1
-			HAL_GPIO_WritePin(GPIOA, B_Pin, GPIO_PIN_SET);   //0
-			HAL_GPIO_WritePin(GPIOA, C_Pin, GPIO_PIN_RESET); //0
-
-			HAL_GPIO_WritePin(GPIOA, D_Pin, GPIO_PIN_SET);   //0
-			HAL_GPIO_WritePin(GPIOA, E_Pin, GPIO_PIN_RESET); //1
-			break;
-
-
-		case s_stop_walking:
-			HAL_GPIO_WritePin(GPIOA, A_Pin, GPIO_PIN_RESET); //1
-			HAL_GPIO_WritePin(GPIOA, B_Pin, GPIO_PIN_SET);   //0
-			HAL_GPIO_WritePin(GPIOA, C_Pin, GPIO_PIN_RESET); //0
-
-			HAL_GPIO_WritePin(GPIOA, D_Pin, GPIO_PIN_SET);   //1
-			HAL_GPIO_WritePin(GPIOA, E_Pin, GPIO_PIN_RESET); //0
-			break;
-
-
-		case s_cars_driving:
 			HAL_GPIO_WritePin(GPIOA, A_Pin, GPIO_PIN_RESET); //0
 			HAL_GPIO_WritePin(GPIOA, B_Pin, GPIO_PIN_SET);   //1
 			HAL_GPIO_WritePin(GPIOA, C_Pin, GPIO_PIN_RESET); //0
@@ -212,19 +158,8 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-
-  enum state st = s_init;
-  enum event ev = ev_none;
-
-  int curr_press = is_button_pressed();
-  int last_press = curr_press;
-
   while (1)
   {
-	  ev = ev_none;
-
-
-
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
