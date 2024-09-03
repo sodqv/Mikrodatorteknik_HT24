@@ -76,44 +76,17 @@ enum state
 
 void set_traffic_lights(enum state s)
 {
-	switch(s) {
+	switch(state) {
 		case s_init:
-			HAL_GPIO_WritePin(GPIOA, A_Pin, GPIO_PIN_SET);   //1
-			HAL_GPIO_WritePin(GPIOA, B_Pin, GPIO_PIN_SET);   //1
-			HAL_GPIO_WritePin(GPIOA, C_Pin, GPIO_PIN_SET);   //1
-
-			HAL_GPIO_WritePin(GPIOA, D_Pin, GPIO_PIN_SET);   //1
-			HAL_GPIO_WritePin(GPIOA, E_Pin, GPIO_PIN_SET); 	 //1
 			break;
-
 
 		case s_car_go:
-			HAL_GPIO_WritePin(GPIOA, A_Pin, GPIO_PIN_RESET); //0
-			HAL_GPIO_WritePin(GPIOA, B_Pin, GPIO_PIN_RESET); //0
-			HAL_GPIO_WritePin(GPIOA, C_Pin, GPIO_PIN_SET); 	 //1
-
-			HAL_GPIO_WritePin(GPIOA, D_Pin, GPIO_PIN_SET);   //1
-			HAL_GPIO_WritePin(GPIOA, E_Pin, GPIO_PIN_RESET); //0
 			break;
-
 
 		case s_pushed_wait:
-			HAL_GPIO_WritePin(GPIOA, A_Pin, GPIO_PIN_RESET); //0
-			HAL_GPIO_WritePin(GPIOA, B_Pin, GPIO_PIN_RESET); //0
-			HAL_GPIO_WritePin(GPIOA, C_Pin, GPIO_PIN_SET);   //1
-
-			HAL_GPIO_WritePin(GPIOA, D_Pin, GPIO_PIN_SET); 	 //1
-			HAL_GPIO_WritePin(GPIOA, E_Pin, GPIO_PIN_RESET); //0
 			break;
 
-
 		case s_cars_stopping:
-			HAL_GPIO_WritePin(GPIOA, A_Pin, GPIO_PIN_RESET); //0
-			HAL_GPIO_WritePin(GPIOA, B_Pin, GPIO_PIN_SET);   //1
-			HAL_GPIO_WritePin(GPIOA, C_Pin, GPIO_PIN_RESET); //0
-
-			HAL_GPIO_WritePin(GPIOA, D_Pin, GPIO_PIN_SET);   //1
-			HAL_GPIO_WritePin(GPIOA, E_Pin, GPIO_PIN_RESET); //0
 			break;
 	}
 }
@@ -264,8 +237,8 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, LD2_Pin|A_Pin|B_Pin|C_Pin
-                          |D_Pin|E_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, LD2_Pin|GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10
+                          |GPIO_PIN_11|GPIO_PIN_12, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : B1_Pin */
   GPIO_InitStruct.Pin = B1_Pin;
@@ -273,10 +246,10 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : LD2_Pin A_Pin B_Pin C_Pin
-                           D_Pin E_Pin */
-  GPIO_InitStruct.Pin = LD2_Pin|A_Pin|B_Pin|C_Pin
-                          |D_Pin|E_Pin;
+  /*Configure GPIO pins : LD2_Pin PA8 PA9 PA10
+                           PA11 PA12 */
+  GPIO_InitStruct.Pin = LD2_Pin|GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10
+                          |GPIO_PIN_11|GPIO_PIN_12;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
