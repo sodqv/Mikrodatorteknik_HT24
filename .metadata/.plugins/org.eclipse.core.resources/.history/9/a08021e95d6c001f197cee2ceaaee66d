@@ -98,23 +98,6 @@ enum state
 };
 
 
-uint32_t ticks_left_in_state;
-
-void my_systick_handler()
-{
-	 if (ticks_left_in_state > 0)
-	 {
-		 ticks_left_in_state--;
-
-		 if (ticks_left_in_state == 0)
-		 {
-			 evq_push_back(ev_state_timeout);
-		 }
-	 }
-}
-
-
-
 //function that fills the queue with ev_error
 void evq_init()
 {
@@ -291,6 +274,10 @@ int main(void)
 
 
 
+  uint32_t ticks_left_in_state;
+  uint32_t curr_tick = HAL_GetTick();
+  uint32_t last_tick = curr_tick;
+
 
   evq_init();
   set_traffic_lights(st);
@@ -298,6 +285,23 @@ int main(void)
 
   while (1)
   {
+	  last_tick = curr_tick;
+	  curr_tick = HAL_GetTick();
+
+	 if (curr_tick != last_tick)
+	 {
+
+		 if (ticks_left_in_state > 0)
+		 {
+			 ticks_left_in_state--;
+
+			 if (ticks_left_in_state == 0)
+			 {
+				 evq_push_back(ev_state_timeout);
+				 //ev = ev_state_timeout;
+			 }
+		 }
+	 }
 
 	 ev = evq_pop_front();
 

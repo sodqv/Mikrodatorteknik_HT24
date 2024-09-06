@@ -108,7 +108,7 @@ void my_systick_handler()
 
 		 if (ticks_left_in_state == 0)
 		 {
-			 evq_push_back(ev_state_timeout);
+			 ev = ev_state_timeout;
 		 }
 	 }
 }

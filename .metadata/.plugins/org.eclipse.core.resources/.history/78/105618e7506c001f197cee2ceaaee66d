@@ -71,18 +71,8 @@ enum event
 {
 	ev_none,
 	ev_button_push,
-	ev_state_timeout,
-	ev_error = -99
+	ev_state_timeout
 };
-
-
-#define EVQ_SIZE 10			//evq = event queue
-
-enum event evq[EVQ_SIZE];	//declares an array evq of type enum event. The array can hold EVQ_SIZE elements.
-
-int evq_count = 0;
-int evq_front_ix = 0;		//front index of the queue
-int evq_rear_ix = 0;		//rear index of the queue
 
 
 enum state
@@ -96,69 +86,6 @@ enum state
 	s_stop_walking,
 	s_cars_yellow
 };
-
-
-uint32_t ticks_left_in_state;
-
-void my_systick_handler()
-{
-	 if (ticks_left_in_state > 0)
-	 {
-		 ticks_left_in_state--;
-
-		 if (ticks_left_in_state == 0)
-		 {
-			 evq_push_back(ev_state_timeout);
-		 }
-	 }
-}
-
-
-
-//function that fills the queue with ev_error
-void evq_init()
-{
-	for (int i = 0; i < EVQ_SIZE; i++)
-	{
-		evq[i] = ev_error;
-	}
-}
-
-
-
-void evq_push_back(enum event e)
-{
-	if (evq_count < EVQ_SIZE)
-	{
-		evq[evq_rear_ix] = e;
-		evq_rear_ix = (evq_rear_ix + 1) % EVQ_SIZE;
-		evq_count++;
-	}
-}
-
-
-enum event evq_pop_front()
-{
-	enum event e = ev_none;
-
-	if (evq_count > 0)
-	{
-		e = evq[evq_front_ix];
-		evq_front_ix = (evq_front_ix + 1) % EVQ_SIZE;
-		evq_count--;
-	}
-	return e;
-}
-
-
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
-{
-	if (GPIO_Pin == B1_Pin)
-	{
-		evq_push_back(ev_button_push);
-	}
-}
-
 
 
 void set_traffic_lights(enum state s)
@@ -289,22 +216,52 @@ int main(void)
   enum state st = s_init;
   enum event ev = ev_none;
 
+  int curr_press = is_button_pressed();
+  int last_press = curr_press;
 
 
+  uint32_t ticks_left_in_state;
+  uint32_t curr_tick = HAL_GetTick();
+  uint32_t last_tick = curr_tick;
 
-  evq_init();
   set_traffic_lights(st);
-
 
   while (1)
   {
+	  last_press = curr_press;
+	  curr_press = is_button_pressed();
 
-	 ev = evq_pop_front();
+	  last_tick = curr_tick;
+	  curr_tick = HAL_GetTick();
+
+	  if (curr_press == 1 && last_press == 0)
+	  {
+		  ev = ev_button_push;
+	  }
+	  else
+	  {
+		 if (curr_tick != last_tick)
+		 {
+
+			 if (ticks_left_in_state > 0)
+			 {
+				 ticks_left_in_state--;
+
+				 if (ticks_left_in_state == 0)
+				 {
+					 ev = ev_state_timeout;
+				 }
+			 }
+
+		 }
+	  }
+
 
 	  switch(st) {
 	  		case s_init:
 	  			if(ev == ev_button_push)
 	  			{
+					ev = ev_none;
 					ticks_left_in_state = 2500;
 					st = s_cars_stand_still;
 					set_traffic_lights(st);
@@ -315,6 +272,7 @@ int main(void)
 	  		case s_cars_stand_still:
 	  			if(ev == ev_state_timeout)
 	  			{
+	  				ev = ev_none;
 	  				ticks_left_in_state = 2500;
 	  				st = s_walk;
 	  				set_traffic_lights(st);
@@ -325,6 +283,7 @@ int main(void)
 	  		case s_walk:
 	  			if(ev == ev_state_timeout)
 	  			{
+	  				ev = ev_none;
 	  				ticks_left_in_state = 1000;
 	  				st = s_stop_walking;
 	  				set_traffic_lights(st);
@@ -335,6 +294,7 @@ int main(void)
 	  		case s_stop_walking:
 	  			if(ev == ev_state_timeout)
 	  			{
+	  				ev = ev_none;
 	  				ticks_left_in_state = 1000;
 	  				st = s_cars_yellow;
 	  				set_traffic_lights(st);
@@ -345,6 +305,7 @@ int main(void)
 	  		case s_cars_yellow:
 	  			if(ev == ev_state_timeout)
 	  			{
+	  				ev = ev_none;
 	  				ticks_left_in_state = 0;
 	  				st = s_car_go;
 	  				set_traffic_lights(st);
@@ -355,6 +316,7 @@ int main(void)
 	  		case s_car_go:
 	  			if(ev == ev_button_push)
 	  			{
+	  				ev = ev_none;
 	  				ticks_left_in_state = 2000;
 	  				st = s_pushed_wait;
 	  				set_traffic_lights(st);
@@ -365,6 +327,7 @@ int main(void)
 	  		case s_pushed_wait:
 	  			if(ev == ev_state_timeout)
 	  			{
+	  				ev = ev_none;
 	  				ticks_left_in_state = 1000;
 	  				st = s_cars_stopping;
 	  				set_traffic_lights(st);
@@ -375,6 +338,7 @@ int main(void)
 	  		case s_cars_stopping:
 	  			if(ev == ev_state_timeout)
 	  			{
+	  				ev = ev_none; 								// clear event
 	  				ticks_left_in_state = 1000; 				// set next timeout
 	  				st = s_cars_stand_still;					// set next state
 	  				set_traffic_lights(s_cars_stand_still); 	// set output
@@ -506,10 +470,6 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
-  /* EXTI interrupt init*/
-  HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
-  HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */

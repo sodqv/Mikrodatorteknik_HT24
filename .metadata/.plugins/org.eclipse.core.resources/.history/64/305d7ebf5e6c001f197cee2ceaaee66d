@@ -100,17 +100,22 @@ enum state
 
 uint32_t ticks_left_in_state;
 
+int systick_count = 0;
+
 void my_systick_handler()
 {
-	 if (ticks_left_in_state > 0)
-	 {
-		 ticks_left_in_state--;
+	systick_count++;
 
-		 if (ticks_left_in_state == 0)
-		 {
-			 evq_push_back(ev_state_timeout);
-		 }
-	 }
+	if (systick_count == 1000)
+	{
+		HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
+		systick_count = 0;
+
+	}
+	else if (systick_count == HAL_GetTick())
+	{
+		evq_push_back(ev_state_timeout);
+	}
 }
 
 
@@ -292,12 +297,33 @@ int main(void)
 
 
 
+  uint32_t curr_tick = HAL_GetTick();
+  uint32_t last_tick = curr_tick;
+
+
   evq_init();
   set_traffic_lights(st);
 
 
   while (1)
   {
+	  last_tick = curr_tick;
+	  curr_tick = HAL_GetTick();
+
+	 if (curr_tick != last_tick)
+	 {
+
+		 if (ticks_left_in_state > 0)
+		 {
+			 ticks_left_in_state--;
+
+			 if (ticks_left_in_state == 0)
+			 {
+				 evq_push_back(ev_state_timeout);
+				 //ev = ev_state_timeout;
+			 }
+		 }
+	 }
 
 	 ev = evq_pop_front();
 
