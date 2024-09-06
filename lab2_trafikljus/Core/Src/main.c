@@ -84,7 +84,7 @@ enum state
 	s_cars_stand_still,
 	s_walk,
 	s_stop_walking,
-	s_cars_driving
+	s_cars_yellow
 };
 
 
@@ -132,8 +132,8 @@ void set_traffic_lights(enum state s)
 
 
 		case s_cars_stand_still:
-			HAL_GPIO_WritePin(GPIOA, A_Pin, GPIO_PIN_RESET); //1
-			HAL_GPIO_WritePin(GPIOA, B_Pin, GPIO_PIN_SET);   //0
+			HAL_GPIO_WritePin(GPIOA, A_Pin, GPIO_PIN_SET);   //1
+			HAL_GPIO_WritePin(GPIOA, B_Pin, GPIO_PIN_RESET); //0
 			HAL_GPIO_WritePin(GPIOA, C_Pin, GPIO_PIN_RESET); //0
 
 			HAL_GPIO_WritePin(GPIOA, D_Pin, GPIO_PIN_SET);   //1
@@ -142,18 +142,18 @@ void set_traffic_lights(enum state s)
 
 
 		case s_walk:
-			HAL_GPIO_WritePin(GPIOA, A_Pin, GPIO_PIN_RESET); //1
-			HAL_GPIO_WritePin(GPIOA, B_Pin, GPIO_PIN_SET);   //0
+			HAL_GPIO_WritePin(GPIOA, A_Pin, GPIO_PIN_SET);   //1
+			HAL_GPIO_WritePin(GPIOA, B_Pin, GPIO_PIN_RESET); //0
 			HAL_GPIO_WritePin(GPIOA, C_Pin, GPIO_PIN_RESET); //0
 
-			HAL_GPIO_WritePin(GPIOA, D_Pin, GPIO_PIN_SET);   //0
-			HAL_GPIO_WritePin(GPIOA, E_Pin, GPIO_PIN_RESET); //1
+			HAL_GPIO_WritePin(GPIOA, D_Pin, GPIO_PIN_RESET); //0
+			HAL_GPIO_WritePin(GPIOA, E_Pin, GPIO_PIN_SET);   //1
 			break;
 
 
 		case s_stop_walking:
-			HAL_GPIO_WritePin(GPIOA, A_Pin, GPIO_PIN_RESET); //1
-			HAL_GPIO_WritePin(GPIOA, B_Pin, GPIO_PIN_SET);   //0
+			HAL_GPIO_WritePin(GPIOA, A_Pin, GPIO_PIN_SET);   //1
+			HAL_GPIO_WritePin(GPIOA, B_Pin, GPIO_PIN_RESET); //0
 			HAL_GPIO_WritePin(GPIOA, C_Pin, GPIO_PIN_RESET); //0
 
 			HAL_GPIO_WritePin(GPIOA, D_Pin, GPIO_PIN_SET);   //1
@@ -161,8 +161,8 @@ void set_traffic_lights(enum state s)
 			break;
 
 
-		case s_cars_driving:
-			HAL_GPIO_WritePin(GPIOA, A_Pin, GPIO_PIN_RESET); //0
+		case s_cars_yellow:
+			HAL_GPIO_WritePin(GPIOA, A_Pin, GPIO_PIN_SET); 	 //1
 			HAL_GPIO_WritePin(GPIOA, B_Pin, GPIO_PIN_SET);   //1
 			HAL_GPIO_WritePin(GPIOA, C_Pin, GPIO_PIN_RESET); //0
 
@@ -219,9 +219,133 @@ int main(void)
   int curr_press = is_button_pressed();
   int last_press = curr_press;
 
+
+  uint32_t ticks_left_in_state;
+  uint32_t curr_tick = HAL_GetTick();
+  uint32_t last_tick = curr_tick;
+
+  set_traffic_lights(st);
+
   while (1)
   {
-	  ev = ev_none;
+	  last_press = curr_press;
+	  curr_press = is_button_pressed();
+
+	  last_tick = curr_tick;
+	  curr_tick = HAL_GetTick();
+
+	  if (curr_press == 1 && last_press == 0)
+	  {
+		  ev = ev_button_push;
+	  }
+	  else
+	  {
+		 if (curr_tick != last_tick)
+		 {
+
+			 if (ticks_left_in_state > 0)
+			 {
+				 ticks_left_in_state--;
+
+				 if (ticks_left_in_state == 0)
+				 {
+					 ev = ev_state_timeout;
+				 }
+			 }
+
+		 }
+	  }
+
+
+	  switch(st) {
+	  		case s_init:
+	  			if(ev == ev_button_push)
+	  			{
+					ev = ev_none;
+					ticks_left_in_state = 2500;
+					st = s_cars_stand_still;
+					set_traffic_lights(st);
+	  			}
+	  			break;
+
+
+	  		case s_cars_stand_still:
+	  			if(ev == ev_state_timeout)
+	  			{
+	  				ev = ev_none;
+	  				ticks_left_in_state = 2500;
+	  				st = s_walk;
+	  				set_traffic_lights(st);
+	  			}
+	  			break;
+
+
+	  		case s_walk:
+	  			if(ev == ev_state_timeout)
+	  			{
+	  				ev = ev_none;
+	  				ticks_left_in_state = 1000;
+	  				st = s_stop_walking;
+	  				set_traffic_lights(st);
+	  			}
+	  			break;
+
+
+	  		case s_stop_walking:
+	  			if(ev == ev_state_timeout)
+	  			{
+	  				ev = ev_none;
+	  				ticks_left_in_state = 1000;
+	  				st = s_cars_yellow;
+	  				set_traffic_lights(st);
+	  			}
+	  			break;
+
+
+	  		case s_cars_yellow:
+	  			if(ev == ev_state_timeout)
+	  			{
+	  				ev = ev_none;
+	  				ticks_left_in_state = 0;
+	  				st = s_car_go;
+	  				set_traffic_lights(st);
+	  			}
+	  			break;
+
+
+	  		case s_car_go:
+	  			if(ev == ev_button_push)
+	  			{
+	  				ev = ev_none;
+	  				ticks_left_in_state = 2000;
+	  				st = s_pushed_wait;
+	  				set_traffic_lights(st);
+	  			}
+	  			break;
+
+
+	  		case s_pushed_wait:
+	  			if(ev == ev_state_timeout)
+	  			{
+	  				ev = ev_none;
+	  				ticks_left_in_state = 1000;
+	  				st = s_cars_stopping;
+	  				set_traffic_lights(st);
+	  			}
+	  			break;
+
+
+	  		case s_cars_stopping:
+	  			if(ev == ev_state_timeout)
+	  			{
+	  				ev = ev_none; 								// clear event
+	  				ticks_left_in_state = 1000; 				// set next timeout
+	  				st = s_cars_stand_still;					// set next state
+	  				set_traffic_lights(s_cars_stand_still); 	// set output
+	  			}
+	  			break;
+
+	  	}
 
 
 
