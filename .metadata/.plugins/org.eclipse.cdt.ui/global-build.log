@@ -1,32 +1,66 @@
-16:52:47 **** Incremental Build of configuration Debug for project lab2_trafikljus ****
+13:36:59 **** Incremental Build of configuration Debug for project lab3_klocka_och_knapp ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'my_systick_handler':
-../Core/Src/main.c:111:26: warning: implicit declaration of function 'evq_push_back' [-Wimplicit-function-declaration]
-  111 |                          evq_push_back(ev_state_timeout);
-      |                          ^~~~~~~~~~~~~
-../Core/Src/main.c: At top level:
-../Core/Src/main.c:129:6: warning: conflicting types for 'evq_push_back'; have 'void(enum event)'
-  129 | void evq_push_back(enum event e)
-      |      ^~~~~~~~~~~~~
-../Core/Src/main.c:111:26: note: previous implicit declaration of 'evq_push_back' with type 'void(enum event)'
-  111 |                          evq_push_back(ev_state_timeout);
-      |                          ^~~~~~~~~~~~~
-arm-none-eabi-gcc -o "lab2_trafikljus.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\LP\JTH\Mikrodatorteknik\Mikrodatorteknik_HT24\lab2_trafikljus\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="lab2_trafikljus.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: lab2_trafikljus.elf
+../Core/Src/main.c: In function 'uart_print_menu':
+../Core/Src/main.c:75:36: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+   75 |         HAL_UART_Transmit(&huart2, "Choose an option: \n", 20, 100);
+      |                                    ^~~~~~~~~~~~~~~~~~~~~~
+      |                                    |
+      |                                    char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+../Core/Src/main.c:76:36: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+   76 |         HAL_UART_Transmit(&huart2, "1. Clock mode.\n", 16, 100);
+      |                                    ^~~~~~~~~~~~~~~~~~
+      |                                    |
+      |                                    char *
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+../Core/Src/main.c:77:36: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+   77 |         HAL_UART_Transmit(&huart2, "2. Button mode.\n", 16, 100);
+      |                                    ^~~~~~~~~~~~~~~~~~~
+      |                                    |
+      |                                    char *
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+../Core/Src/main.c: In function 'uart_print_bad_choice':
+../Core/Src/main.c:83:36: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+   83 |         HAL_UART_Transmit(&huart2, "Wrong input\n", 11, 100);
+      |                                    ^~~~~~~~~~~~~~~
+      |                                    |
+      |                                    char *
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:154:57: warning: statement with no effect [-Wunused-value]
+  154 |                   case 1:                               clock_mode;             break;
+      |                                                         ^~~~~~~~~~
+../Core/Src/main.c:155:57: warning: statement with no effect [-Wunused-value]
+  155 |                   case 2:                               button_mode;    break;
+      |                                                         ^~~~~~~~~~~
+arm-none-eabi-gcc -o "lab3_klocka_och_knapp.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\LP\JTH\Mikrodatorteknik\Mikrodatorteknik_HT24\lab3_klocka_och_knapp\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="lab3_klocka_och_knapp.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: lab3_klocka_och_knapp.elf
  
-arm-none-eabi-size  lab2_trafikljus.elf 
-arm-none-eabi-objdump -h -S lab2_trafikljus.elf  > "lab2_trafikljus.list"
+arm-none-eabi-size  lab3_klocka_och_knapp.elf 
+arm-none-eabi-objdump -h -S lab3_klocka_och_knapp.elf  > "lab3_klocka_och_knapp.list"
    text	   data	    bss	    dec	    hex	filename
-   9068	     12	   1668	  10748	   29fc	lab2_trafikljus.elf
+  12556	     92	   1972	  14620	   391c	lab3_klocka_och_knapp.elf
 Finished building: default.size.stdout
  
-Finished building: lab2_trafikljus.list
+Finished building: lab3_klocka_och_knapp.list
  
-16:52:55 **** Incremental Build of configuration Debug for project lab2_trafikljus ****
+13:37:04 **** Incremental Build of configuration Debug for project lab3_klocka_och_knapp ****
 make -j12 all 
-arm-none-eabi-size  lab2_trafikljus.elf 
+arm-none-eabi-size  lab3_klocka_och_knapp.elf 
    text	   data	    bss	    dec	    hex	filename
-   9068	     12	   1668	  10748	   29fc	lab2_trafikljus.elf
+  12556	     92	   1972	  14620	   391c	lab3_klocka_och_knapp.elf
 Finished building: default.size.stdout
  
