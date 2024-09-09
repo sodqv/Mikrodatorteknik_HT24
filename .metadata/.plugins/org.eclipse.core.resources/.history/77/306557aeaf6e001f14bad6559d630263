@@ -57,9 +57,6 @@ static void MX_USART2_UART_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
-uint16_t button_exti_count;
-uint16_t button_debounced_count;
-
 int uart_get_menu_choice()
 {
 	char str[1] = { '\0' };
@@ -112,18 +109,8 @@ void button_mode()
 		}
 
 		// check b1 button (active low)
-		b1_pressed = GPIO_PIN_RESET == HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin);
+		b1_pressed = GPIO_PIN_RESET == HAL_GPIO_ReadPin(B1_GPIO_Port, B1_PIN);
 		qs_put_big_num(b1_pressed ? button_exti_count : button_debounced_count);
-	}
-}
-
-
-
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
-{
-	if (GPIO_Pin == MY_BTN_Pin)
-	{
-		button_exti_count++;
 	}
 }
 
@@ -167,7 +154,8 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 
-
+  uint16_t button_exti_count;
+  uint16_t button_debounced_count;
 
   while (1)
   {
@@ -178,8 +166,8 @@ int main(void)
 	  {
 		  switch (menu_choice)
 		  {
-		  case 1:			   clock_mode();	break;
-		  case 2:			  button_mode();	break;
+		  case 1:				clock_mode;		break;
+		  case 2:				button_mode;	break;
 		  default:	uart_print_bad_choice(); 	break;
 		  }
 	  }

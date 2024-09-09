@@ -101,7 +101,7 @@ void clock_mode()
 
 void button_mode()
 {
-	int b1_pressed;
+	int btn_pressed;
 
 	while(1)
 	{
@@ -112,8 +112,8 @@ void button_mode()
 		}
 
 		// check b1 button (active low)
-		b1_pressed = GPIO_PIN_RESET == HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin);
-		qs_put_big_num(b1_pressed ? button_exti_count : button_debounced_count);
+		btn_pressed = GPIO_PIN_RESET == HAL_GPIO_ReadPin(MY_BTN_GPIO_Port, MY_BTN_Pin);
+		qs_put_big_num(btn_pressed ? button_exti_count : button_debounced_count);
 	}
 }
 
@@ -178,8 +178,8 @@ int main(void)
 	  {
 		  switch (menu_choice)
 		  {
-		  case 1:			   clock_mode();	break;
-		  case 2:			  button_mode();	break;
+		  case 1:				clock_mode;		break;
+		  case 2:				button_mode;	break;
 		  default:	uart_print_bad_choice(); 	break;
 		  }
 	  }

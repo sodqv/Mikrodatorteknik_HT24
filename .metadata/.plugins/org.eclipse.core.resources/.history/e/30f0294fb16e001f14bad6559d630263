@@ -57,9 +57,6 @@ static void MX_USART2_UART_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
-uint16_t button_exti_count;
-uint16_t button_debounced_count;
-
 int uart_get_menu_choice()
 {
 	char str[1] = { '\0' };
@@ -167,7 +164,8 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 
-
+  uint16_t button_exti_count;
+  uint16_t button_debounced_count;
 
   while (1)
   {
@@ -178,8 +176,8 @@ int main(void)
 	  {
 		  switch (menu_choice)
 		  {
-		  case 1:			   clock_mode();	break;
-		  case 2:			  button_mode();	break;
+		  case 1:				clock_mode;		break;
+		  case 2:				button_mode;	break;
 		  default:	uart_print_bad_choice(); 	break;
 		  }
 	  }

@@ -985,3 +985,43 @@
 2024-09-09 12:54:21,803 [INFO] ProjectBuilder:5097 - Time for Generating toolchain IDE Files: 814mS.
 2024-09-09 12:54:21,804 [INFO] ProjectBuilder:3107 - Time for Copy CMSIS : 0mS.
 2024-09-09 12:54:21,804 [INFO] ProjectBuilder:3107 - Time for Copy CMSIS : 0mS.
+2024-09-09 14:38:21,440 [INFO] Gpio:277 - dependency for GPIO [RCC, SYS, USART2]
+2024-09-09 14:38:21,472 [INFO] NvicIntPanel:101 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2024-09-09 14:40:41,583 [INFO] Gpio:277 - dependency for GPIO [RCC, SYS, USART2]
+2024-09-09 14:40:41,614 [INFO] NvicIntPanel:101 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2024-09-09 14:41:32,836 [INFO] Gpio:277 - dependency for GPIO [RCC, SYS, USART2]
+2024-09-09 14:42:07,261 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 644334768 Bytes (853540864)
+2024-09-09 14:42:09,280 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 666354864 Bytes (853540864)
+2024-09-09 14:42:10,822 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 711443632 Bytes (853540864)
+2024-09-09 14:42:10,936 [INFO] BlockDiagram:2766 - set Specific Code input for plugin: NVIC
+2024-09-09 14:42:10,936 [INFO] BlockDiagram:2766 - set Specific Code input for plugin: USART
+2024-09-09 14:42:10,936 [INFO] BlockDiagram:2766 - set Specific Code input for plugin: SYS
+2024-09-09 14:42:10,936 [INFO] BlockDiagram:2766 - set Specific Code input for plugin: GPIO
+2024-09-09 14:42:10,936 [INFO] BlockDiagram:2766 - set Specific Code input for plugin: RCC
+2024-09-09 14:42:10,936 [INFO] CodeGenerator:807 - code generatio: config db path: C:\ST\STM32CubeIDE_1.16.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.12.0.202406281431\\db\
+2024-09-09 14:42:11,042 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\LP\JTH\Mikrodatorteknik\Mikrodatorteknik_HT24\lab3_klocka_och_knapp\MXTmpFiles\license.tmp_save
+2024-09-09 14:42:11,104 [INFO] CodeEngine:279 - Generated code: C:\Users\LP\JTH\Mikrodatorteknik\Mikrodatorteknik_HT24\lab3_klocka_och_knapp\MXTmpFiles\license.tmp
+2024-09-09 14:42:11,136 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\LP\JTH\Mikrodatorteknik\Mikrodatorteknik_HT24\lab3_klocka_och_knapp\MXTmpFiles\gpio.tmp_save
+2024-09-09 14:42:11,183 [INFO] CodeEngine:279 - Generated code: C:\Users\LP\JTH\Mikrodatorteknik\Mikrodatorteknik_HT24\lab3_klocka_och_knapp\MXTmpFiles\gpio.tmp
+2024-09-09 14:42:11,263 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\LP\JTH\Mikrodatorteknik\Mikrodatorteknik_HT24\lab3_klocka_och_knapp\Core\Src\stm32f4xx_it.c_save
+2024-09-09 14:42:11,366 [INFO] CodeEngine:279 - Generated code: C:\Users\LP\JTH\Mikrodatorteknik\Mikrodatorteknik_HT24\lab3_klocka_och_knapp\Core\Src\stm32f4xx_it.c
+2024-09-09 14:42:11,377 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\LP\JTH\Mikrodatorteknik\Mikrodatorteknik_HT24\lab3_klocka_och_knapp\Core\Inc\stm32f4xx_it.h_save
+2024-09-09 14:42:11,438 [INFO] CodeEngine:279 - Generated code: C:\Users\LP\JTH\Mikrodatorteknik\Mikrodatorteknik_HT24\lab3_klocka_och_knapp\Core\Inc\stm32f4xx_it.h
+2024-09-09 14:42:11,459 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\LP\JTH\Mikrodatorteknik\Mikrodatorteknik_HT24\lab3_klocka_och_knapp\Core\Src\stm32f4xx_hal_msp.c_save
+2024-09-09 14:42:11,517 [INFO] CodeEngine:279 - Generated code: C:\Users\LP\JTH\Mikrodatorteknik\Mikrodatorteknik_HT24\lab3_klocka_och_knapp\Core\Src\stm32f4xx_hal_msp.c
+2024-09-09 14:42:11,526 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\LP\JTH\Mikrodatorteknik\Mikrodatorteknik_HT24\lab3_klocka_och_knapp\MXTmpFiles\system.tmp_save
+2024-09-09 14:42:11,559 [INFO] CodeEngine:279 - Generated code: C:\Users\LP\JTH\Mikrodatorteknik\Mikrodatorteknik_HT24\lab3_klocka_och_knapp\MXTmpFiles\system.tmp
+2024-09-09 14:42:11,582 [INFO] CodeEngine:311 - oldGeneratedFile, C:\Users\LP\JTH\Mikrodatorteknik\Mikrodatorteknik_HT24\lab3_klocka_och_knapp\Core\Inc\stm32f4xx_hal_conf.h_save
+2024-09-09 14:42:11,640 [INFO] CodeEngine:335 - Generated code: C:\Users\LP\JTH\Mikrodatorteknik\Mikrodatorteknik_HT24\lab3_klocka_och_knapp\Core\Inc\stm32f4xx_hal_conf.h
+2024-09-09 14:42:11,685 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\LP\JTH\Mikrodatorteknik\Mikrodatorteknik_HT24\lab3_klocka_och_knapp\Core\Inc\main.h_save
+2024-09-09 14:42:11,744 [INFO] CodeEngine:279 - Generated code: C:\Users\LP\JTH\Mikrodatorteknik\Mikrodatorteknik_HT24\lab3_klocka_och_knapp\Core\Inc\main.h
+2024-09-09 14:42:11,763 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\LP\JTH\Mikrodatorteknik\Mikrodatorteknik_HT24\lab3_klocka_och_knapp\Core\Src\main.c_save
+2024-09-09 14:42:11,836 [INFO] CodeEngine:279 - Generated code: C:\Users\LP\JTH\Mikrodatorteknik\Mikrodatorteknik_HT24\lab3_klocka_och_knapp\Core\Src\main.c
+2024-09-09 14:42:12,032 [INFO] ProjectBuilder:3249 - Time for Copy HAL[1] : 119mS.
+2024-09-09 14:42:12,034 [INFO] ProjectBuilder:4828 - Project Generator version: 4.4.0-B60
+2024-09-09 14:42:12,081 [INFO] ConfigFileManager:1531 - The Die is : DIE433
+2024-09-09 14:42:12,558 [INFO] ProjectBuilder:5097 - Time for Generating toolchain IDE Files: 524mS.
+2024-09-09 14:42:12,559 [INFO] ProjectBuilder:3107 - Time for Copy CMSIS : 1mS.
+2024-09-09 14:42:12,560 [INFO] ProjectBuilder:3107 - Time for Copy CMSIS : 0mS.
+2024-09-09 15:56:32,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2024-09-09 15:56:32,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
