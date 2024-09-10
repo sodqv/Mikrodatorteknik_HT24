@@ -60,19 +60,8 @@ static void MX_USART2_UART_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
-#define BOUNCE_DELAY_MS 0.84
-
 uint16_t button_exti_count;
 uint16_t button_debounced_count;
-uint32_t last_flank_causing_exti;
-uint32_t now;
-
-
-void now_counter()
-{
-	now = HAL_GetTick();
-}
-
 
 int uart_get_menu_choice()
 {
@@ -115,22 +104,23 @@ void clock_mode()
 
 void button_mode()
 {
-	int b1_pressed;
-	int my_btn_pressed;
+	int b1_pressed;		//variable that stores whether the button is pressed or not
 
-	while(1)
+	while(1)			//infinite loop continuously checks the button state
 	{
 		/* deal with debouncing the button */
-		if (now - last_flank_causing_exti >= BOUNCE_DELAY_MS)
+		if (unhandled_exti)
 		{
-			my_btn_pressed = GPIO_PIN_RESET == HAL_GPIO_ReadPin(MY_BTN_GPIO_Port, MY_BTN_Pin);
+			HAL_Delay(0.84);	// value measured by probing
+			pressed = GPIO_PIN_RESET == HAL_GPIO_ReadPin(MY_BTN_GPIO_Port, MY_BTN_Pin);
 
-			if (my_btn_pressed)
+			if (pressed)
 			{
 				button_debounced_count++;
 			}
 		}
 
+		unhandled_exti = 0;
 
 		// check b1 button (active low)
 		b1_pressed = GPIO_PIN_RESET == HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin);
@@ -148,6 +138,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 	{
 		button_exti_count++;
 		last_flank_causing_exti = HAL_GetTick();
+		//unhandled_exti = 1;
 	}
 }
 

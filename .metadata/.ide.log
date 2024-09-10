@@ -568,3 +568,5 @@
 2024-09-10 11:01:46,339 [INFO] CADModel:165 - CPN selected for project levelSTM32F401RET6
 2024-09-10 11:01:46,339 [INFO] CADModel:114 - Register for checkConnection events
 2024-09-10 11:01:46,390 [INFO] OpenFileManager:363 - Restore cursor
+2024-09-10 14:40:52,722 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2024-09-10 14:40:52,724 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
