@@ -1,75 +1,6 @@
-15:52:16 **** Incremental Build of configuration Debug for project lab3_klocka_och_knapp ****
+12:40:43 **** Incremental Build of configuration Debug for project lab3_klocka_och_knapp ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'uart_get_menu_choice':
-../Core/Src/main.c:69:9: warning: implicit declaration of function 'sscanf' [-Wimplicit-function-declaration]
-   69 |         sscanf(str, "%d", &ret);
-      |         ^~~~~~
-../Core/Src/main.c:21:1: note: include '<stdio.h>' or provide a declaration of 'sscanf'
-   20 | #include "main.h"
-  +++ |+#include <stdio.h>
-   21 | 
-../Core/Src/main.c:69:9: warning: incompatible implicit declaration of built-in function 'sscanf' [-Wbuiltin-declaration-mismatch]
-   69 |         sscanf(str, "%d", &ret);
-      |         ^~~~~~
-../Core/Src/main.c:69:9: note: include '<stdio.h>' or provide a declaration of 'sscanf'
-../Core/Src/main.c: In function 'uart_print_menu':
-../Core/Src/main.c:80:48: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
-   80 |         HAL_UART_Transmit(&huart2, menu_title, strlen(menu_title), 2000);
-      |                                                ^~~~~~
-../Core/Src/main.c:21:1: note: include '<string.h>' or provide a declaration of 'strlen'
-   20 | #include "main.h"
-  +++ |+#include <string.h>
-   21 | 
-../Core/Src/main.c:80:48: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
-   80 |         HAL_UART_Transmit(&huart2, menu_title, strlen(menu_title), 2000);
-      |                                                ^~~~~~
-../Core/Src/main.c:80:48: note: include '<string.h>' or provide a declaration of 'strlen'
-../Core/Src/main.c:80:36: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
-   80 |         HAL_UART_Transmit(&huart2, menu_title, strlen(menu_title), 2000);
-      |                                    ^~~~~~~~~~
-      |                                    |
-      |                                    char *
-In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
-                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
-                 from ../Core/Inc/main.h:30,
-                 from ../Core/Src/main.c:20:
-../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
-  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
-      |                                                                ~~~~~~~~~~~~~~~^~~~~
-../Core/Src/main.c:81:36: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
-   81 |         HAL_UART_Transmit(&huart2, op1, strlen(op1), 1000);
-      |                                    ^~~
-      |                                    |
-      |                                    char *
-../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
-  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
-      |                                                                ~~~~~~~~~~~~~~~^~~~~
-../Core/Src/main.c:82:36: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
-   82 |         HAL_UART_Transmit(&huart2, op2, strlen(op2), 1000);
-      |                                    ^~~
-      |                                    |
-      |                                    char *
-../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
-  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
-      |                                                                ~~~~~~~~~~~~~~~^~~~~
-../Core/Src/main.c: In function 'uart_print_bad_choice':
-../Core/Src/main.c:89:47: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
-   89 |         HAL_UART_Transmit(&huart2, wrong_inp, strlen(wrong_inp), 1000);
-      |                                               ^~~~~~
-../Core/Src/main.c:89:47: note: include '<string.h>' or provide a declaration of 'strlen'
-../Core/Src/main.c:89:36: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
-   89 |         HAL_UART_Transmit(&huart2, wrong_inp, strlen(wrong_inp), 1000);
-      |                                    ^~~~~~~~~
-      |                                    |
-      |                                    char *
-../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
-  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
-      |                                                                ~~~~~~~~~~~~~~~^~~~~
-../Core/Src/main.c: In function 'button_mode':
-../Core/Src/main.c:116:17: warning: implicit declaration of function 'qs_put_big_num' [-Wimplicit-function-declaration]
-  116 |                 qs_put_big_num(b1_pressed ? button_exti_count : button_debounced_count);
-      |                 ^~~~~~~~~~~~~~
 arm-none-eabi-gcc -o "lab3_klocka_och_knapp.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\LP\JTH\Mikrodatorteknik\Mikrodatorteknik_HT24\lab3_klocka_och_knapp\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="lab3_klocka_och_knapp.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: lab3_klocka_och_knapp.elf
  
@@ -81,7 +12,21 @@ Finished building: default.size.stdout
  
 Finished building: lab3_klocka_och_knapp.list
  
-15:52:20 **** Incremental Build of configuration Debug for project lab3_klocka_och_knapp ****
+12:40:48 **** Incremental Build of configuration Debug for project lab3_klocka_och_knapp ****
+make -j12 all 
+arm-none-eabi-size  lab3_klocka_och_knapp.elf 
+   text	   data	    bss	    dec	    hex	filename
+  13892	    112	   1976	  15980	   3e6c	lab3_klocka_och_knapp.elf
+Finished building: default.size.stdout
+ 
+12:42:03 **** Incremental Build of configuration Debug for project lab3_klocka_och_knapp ****
+make -j12 all 
+arm-none-eabi-size  lab3_klocka_och_knapp.elf 
+   text	   data	    bss	    dec	    hex	filename
+  13892	    112	   1976	  15980	   3e6c	lab3_klocka_och_knapp.elf
+Finished building: default.size.stdout
+ 
+12:56:41 **** Incremental Build of configuration Debug for project lab3_klocka_och_knapp ****
 make -j12 all 
 arm-none-eabi-size  lab3_klocka_och_knapp.elf 
    text	   data	    bss	    dec	    hex	filename

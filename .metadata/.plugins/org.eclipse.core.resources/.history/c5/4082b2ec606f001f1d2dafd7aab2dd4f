@@ -18,9 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "quad_sseg.h"
 #include <stdio.h>
-#include <string.h>
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -89,7 +87,7 @@ void uart_print_menu()
 void uart_print_bad_choice()
 {
 	char wrong_inp[] = "Wrong input\n\r";
-	HAL_UART_Transmit(&huart2, (uint8_t*)wrong_inp, strlen(wrong_inp), 1000);
+	HAL_UART_Transmit(&huart2, wrong_inp, strlen(wrong_inp), 1000);
 }
 
 
@@ -104,9 +102,9 @@ void clock_mode()
 
 void button_mode()
 {
-	int b1_pressed;		//variable that stores whether the button is pressed or not
+	int b1_pressed;
 
-	while(1)			//infinite loop continuously checks the button state
+	while(1)
 	{
 		/* deal with debouncing the button */
 		if (1)
