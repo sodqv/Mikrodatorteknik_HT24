@@ -115,6 +115,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 	if (GPIO_Pin == MY_BTN_Pin)
 	{
 		button_exti_count++;
+		//last_flank_causing_exti = HAL_GetTick();
 		unhandled_exti = 1;
 	}
 }
@@ -152,6 +153,8 @@ void button_mode()
 				}
 				unhandled_exti = 0;
 			}
+
+
 		}
 
 

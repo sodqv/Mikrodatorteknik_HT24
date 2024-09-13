@@ -60,13 +60,14 @@ static void MX_USART2_UART_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
-#define BOUNCE_DELAY_MS 20			//number of ms before the signal curve stabilizes in oscilloscope
+#define BOUNCE_DELAY_MS 0.84
 
-uint16_t button_exti_count;			//number of times the interrupt/callback is run
-uint16_t button_debounced_count;	//number of times the user has pressed the button
+uint16_t button_exti_count;
+uint16_t button_debounced_count;
+uint32_t last_flank_causing_exti;
+uint32_t last_managed_exti;
 
-uint32_t unhandled_exti;
-uint32_t current_tick_value;
+uint32_t now;
 
 
 
@@ -115,7 +116,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 	if (GPIO_Pin == MY_BTN_Pin)
 	{
 		button_exti_count++;
-		unhandled_exti = 1;
+		last_flank_causing_exti = HAL_GetTick();
 	}
 }
 
@@ -123,7 +124,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 
 void now_counter()
 {
-	current_tick_value = HAL_GetTick();
+	now = HAL_GetTick();
 }
 
 
@@ -136,13 +137,20 @@ void button_mode()
 	while(1)
 	{
 		/* deal with debouncing the button */
-		if(unhandled_exti)
+		if(last_flank_causing_exti != last_managed_exti)
 		{
 
 			//now räknar varje HAL_GetTick, last_flank_causing_exti räknar varje callback när my_btn trycks.
 			//BOUNCE_DELAY är antalet ms innan signalen blir stabil.
 
-			if ((current_tick_value - unhandled_exti) >= BOUNCE_DELAY_MS)
+			if ((now - last_flank_causing_exti) >= BOUNCE_DELAY_MS)
+			{
+
+			}
+		}
+		else
+		{
+			if (last_flank_causing_exti < BOUNCE_DELAY_MS)
 			{
 				my_btn_pressed = GPIO_PIN_RESET == HAL_GPIO_ReadPin(MY_BTN_GPIO_Port, MY_BTN_Pin);
 
@@ -150,17 +158,16 @@ void button_mode()
 				{
 					button_debounced_count++;
 				}
-				unhandled_exti = 0;
 			}
-		}
 
+		}
 
 
 
 		// check b1 button (active low)
 		b1_pressed = GPIO_PIN_RESET == HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin);
 
-		//if b1_pressed is true then display button_exti_count, otherwise display button_debounced_count
+		//if b1_pressed is true then do button_exti_count, otherwise do button_debounced_count
 		qs_put_big_num(b1_pressed ? button_exti_count : button_debounced_count);
 	}
 }

@@ -60,13 +60,13 @@ static void MX_USART2_UART_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
-#define BOUNCE_DELAY_MS 20			//number of ms before the signal curve stabilizes in oscilloscope
+#define BOUNCE_DELAY_MS 20		//number of ms before the signal curve stabilizes in oscilloscope
 
-uint16_t button_exti_count;			//number of times the interrupt/callback is run
-uint16_t button_debounced_count;	//number of times the user has pressed the button
-
+uint16_t button_exti_count;
+uint16_t button_debounced_count;
 uint32_t unhandled_exti;
-uint32_t current_tick_value;
+
+uint32_t now;
 
 
 
@@ -115,6 +115,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 	if (GPIO_Pin == MY_BTN_Pin)
 	{
 		button_exti_count++;
+		//last_flank_causing_exti = HAL_GetTick();
 		unhandled_exti = 1;
 	}
 }
@@ -123,7 +124,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 
 void now_counter()
 {
-	current_tick_value = HAL_GetTick();
+	now = HAL_GetTick();
 }
 
 
@@ -142,7 +143,7 @@ void button_mode()
 			//now räknar varje HAL_GetTick, last_flank_causing_exti räknar varje callback när my_btn trycks.
 			//BOUNCE_DELAY är antalet ms innan signalen blir stabil.
 
-			if ((current_tick_value - unhandled_exti) >= BOUNCE_DELAY_MS)
+			if ((now - last_flank_causing_exti) >= BOUNCE_DELAY_MS)
 			{
 				my_btn_pressed = GPIO_PIN_RESET == HAL_GPIO_ReadPin(MY_BTN_GPIO_Port, MY_BTN_Pin);
 
@@ -152,6 +153,8 @@ void button_mode()
 				}
 				unhandled_exti = 0;
 			}
+
+
 		}
 
 
