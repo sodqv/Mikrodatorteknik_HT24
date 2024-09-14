@@ -78,17 +78,9 @@ uint32_t hours = 0;
 uint32_t minutes = 0;
 uint32_t seconds = 0;
 
-/* use for testing
-uint32_t hours = 23;
-uint32_t minutes = 59;
-uint32_t seconds = 45;
-*/
 
-
-uint32_t counter_1s = 0;
-
-volatile uint8_t colon_state = 1;	//initializes the colon state to 1 (on)
-
+char timeMMSS[6];
+char timeHHMM[6];
 
 
 int uart_get_menu_choice()
@@ -124,57 +116,46 @@ void uart_print_bad_choice()
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-	//my clock config (prescaler = 999, period = 41999) interrupts the timer every 0.5 seconds.
-	//to make the display update every 1 seconds I use the counter_1s
-
 	if (htim->Instance == TIM9) 	//if the current timer is TIM9 then execute the code within the if block
 	{
-		counter_1s++;
-		if (counter_1s >= 2)
+		seconds++;
+		if (seconds >= 60)
 		{
-			counter_1s = 0;
-
-			seconds++;
-			if (seconds >= 60)
-			{
-				seconds = 0;
-				minutes++;
-			}
-
-			if (minutes >= 60)
-			{
-				minutes = 0;
-				hours++;
-			}
-
-			if (hours >= 24)
-			{
-				hours = 0;
-			}
+			seconds = 0;
+			minutes++;
 		}
 
-		//the colon should blink every 0.5 s
-		colon_state = !colon_state;
+		if (minutes >= 60)
+		{
+			minutes = 0;
+			hours++;
+		}
+
+		if (hours >= 24)
+		{
+			hours = 0;
+		}
+
+
 
 	}
 }
-
 
 
 void clock_mode()
 {
 	while(1)
 	{
-		HAL_TIM_Base_Start_IT(&htim9);
-
 		int b1_pressed;
 
-		uint8_t hour1 = hours / 10;
-		uint8_t hour2 = hours % 10;
+		HAL_TIM_Base_Start_IT(&htim9);
+
 		uint8_t min1 = minutes / 10;
 		uint8_t min2 = minutes % 10;
 		uint8_t sec1 = seconds / 10;
 		uint8_t sec2 = seconds % 10;
+		uint8_t hour1 = hours / 10;
+		uint8_t hour2 = hours % 10;
 
 
 
@@ -185,11 +166,11 @@ void clock_mode()
 		//if blue button is pressed then display HHMM, otherwise display MMSS
 		if (b1_pressed)
 		{
-			qs_put_digits(hour1, hour2, min1, min2, colon_state);
+			qs_put_digits(hour1, hour2, min1, min2, 1);
 		}
 		else
 		{
-			qs_put_digits(min1, min2, sec1, sec2, colon_state);
+			qs_put_digits(min1, min2, sec1, sec2, 1);
 		}
 	}
 }
@@ -297,6 +278,7 @@ int main(void)
 
   while (1)
   {
+
 	  uart_print_menu();
 
 	  int menu_choice = uart_get_menu_choice();

@@ -78,17 +78,9 @@ uint32_t hours = 0;
 uint32_t minutes = 0;
 uint32_t seconds = 0;
 
-/* use for testing
-uint32_t hours = 23;
-uint32_t minutes = 59;
-uint32_t seconds = 45;
-*/
-
-
 uint32_t counter_1s = 0;
 
-volatile uint8_t colon_state = 1;	//initializes the colon state to 1 (on)
-
+volatile uint8_t colon_state = 1;
 
 
 int uart_get_menu_choice()
@@ -154,27 +146,26 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		}
 
 		//the colon should blink every 0.5 s
-		colon_state = !colon_state;
+		colon_state != colon_state;
 
 	}
 }
-
 
 
 void clock_mode()
 {
 	while(1)
 	{
-		HAL_TIM_Base_Start_IT(&htim9);
-
 		int b1_pressed;
 
-		uint8_t hour1 = hours / 10;
-		uint8_t hour2 = hours % 10;
+		HAL_TIM_Base_Start_IT(&htim9);
+
 		uint8_t min1 = minutes / 10;
 		uint8_t min2 = minutes % 10;
 		uint8_t sec1 = seconds / 10;
 		uint8_t sec2 = seconds % 10;
+		uint8_t hour1 = hours / 10;
+		uint8_t hour2 = hours % 10;
 
 
 
@@ -297,6 +288,7 @@ int main(void)
 
   while (1)
   {
+
 	  uart_print_menu();
 
 	  int menu_choice = uart_get_menu_choice();
