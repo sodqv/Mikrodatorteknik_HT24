@@ -70,9 +70,7 @@ uint16_t button_debounced_count;	//number of times the user has pressed the butt
 
 uint32_t unhandled_exti;
 uint32_t current_tick_value;
-
-TIM_HandleTypeDef htim9;			// initialize the TIM9 timer
-
+uint32_t last_exti_tick;
 
 uint32_t hours = 0;
 uint32_t minutes = 0;
@@ -202,6 +200,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 	{
 		button_exti_count++;
 		unhandled_exti = 1;
+		last_exti_tick = HAL_GetTick();
 	}
 }
 
@@ -227,8 +226,9 @@ void button_mode()
 
 			//now räknar varje HAL_GetTick, last_flank_causing_exti räknar varje callback när my_btn trycks.
 			//BOUNCE_DELAY är antalet ms innan signalen blir stabil.
+			current_tick_value = HAL_GetTick();
 
-			if ((current_tick_value - unhandled_exti) >= BOUNCE_DELAY_MS)
+			if ((current_tick_value - last_exti_tick) >= BOUNCE_DELAY_MS)
 			{
 				my_btn_pressed = GPIO_PIN_RESET == HAL_GPIO_ReadPin(MY_BTN_GPIO_Port, MY_BTN_Pin);
 
