@@ -32,7 +32,6 @@ struct clock_data
 	uint8_t hours;
 	uint8_t minutes;
 	uint8_t seconds;
-	uint8_t counter_1s;
 };
 
 /* USER CODE END PTD */
@@ -73,42 +72,46 @@ static void MX_I2C1_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
+uint32_t hours = 0;
+uint32_t minutes = 0;
+uint32_t seconds = 0;
+
+uint32_t counter_1s = 0;
 
 
-
-void cd_set(struct clock_data * pcd, uint8_t hrs, uint8_t min, uint8_t sec, uint8_t cnt)
+void cd_set(struct clock_data * pcd, uint8_t hrs, uint8_t min, uint8_t sec)
 {
 	pcd -> seconds = sec;
 	pcd -> minutes = min;
 	pcd -> hours = hrs;
-	pcd -> counter_1s = cnt;
 
+	my_clock = {hrs, min, sec};
 }
 
 
 void cd_tick(struct clock_data * pcd)
 {
-	pcd -> counter_1s++;
-	if (pcd -> counter_1s >= 2)
+	counter_1s++;
+	if (counter_1s >= 2)
 	{
-		pcd -> counter_1s = 0;
+		counter_1s = 0;
 
-		pcd -> seconds++;
-		if (pcd -> seconds >= 60)
+		seconds++;
+		if (seconds >= 60)
 		{
-			pcd -> seconds = 0;
-			pcd -> minutes++;
+			seconds = 0;
+			minutes++;
 		}
 
-		if (pcd -> minutes >= 60)
+		if (minutes >= 60)
 		{
-			pcd -> minutes = 0;
-			pcd -> hours++;
+			minutes = 0;
+			hours++;
 		}
 
-		if (pcd -> hours >= 24)
+		if (hours >= 24)
 		{
-			pcd -> hours = 0;
+			hours = 0;
 		}
 	}
 }
@@ -127,13 +130,15 @@ void uart_print_cd(UART_HandleTypeDef * huart, struct clock_data * pcd)
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-	if (htim -> Instance == TIM9)
-	{
-		cd_tick(&my_clock);
-	}
-
+	cd_tick(&my_clock);
 }
 
+
+void start_clock()
+{
+
+
+}
 
 
 
@@ -173,13 +178,10 @@ int main(void)
   MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
 
-  //cd_set(&my_clock, 23, 59, 45);
-
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-
 
   HAL_TIM_Base_Start_IT(&htim9);
 

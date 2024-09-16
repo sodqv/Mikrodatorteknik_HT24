@@ -32,7 +32,6 @@ struct clock_data
 	uint8_t hours;
 	uint8_t minutes;
 	uint8_t seconds;
-	uint8_t counter_1s;
 };
 
 /* USER CODE END PTD */
@@ -74,24 +73,24 @@ static void MX_I2C1_Init(void);
 /* USER CODE BEGIN 0 */
 
 
+uint32_t counter_1s = 0;
 
 
-void cd_set(struct clock_data * pcd, uint8_t hrs, uint8_t min, uint8_t sec, uint8_t cnt)
+void cd_set(struct clock_data * pcd, uint8_t hrs, uint8_t min, uint8_t sec)
 {
 	pcd -> seconds = sec;
 	pcd -> minutes = min;
 	pcd -> hours = hrs;
-	pcd -> counter_1s = cnt;
 
 }
 
 
 void cd_tick(struct clock_data * pcd)
 {
-	pcd -> counter_1s++;
-	if (pcd -> counter_1s >= 2)
+	counter_1s++;
+	if (counter_1s >= 2)
 	{
-		pcd -> counter_1s = 0;
+		counter_1s = 0;
 
 		pcd -> seconds++;
 		if (pcd -> seconds >= 60)
@@ -134,6 +133,12 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
 }
 
+
+void start_clock()
+{
+
+
+}
 
 
 
