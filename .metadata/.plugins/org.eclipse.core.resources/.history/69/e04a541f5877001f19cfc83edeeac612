@@ -59,8 +59,6 @@ UART_HandleTypeDef huart2;
 
 struct clock_data my_clock;
 
-TextLCDType myLCD;
-
 uint16_t callback_occured = 0;
 
 /* USER CODE END PV */
@@ -196,7 +194,7 @@ int main(void)
   		uint8_t                 device_address); //pointer to the TextLCDType, pointer to hi2c1, device adress
   */
 
-  TextLCD_Init(&myLCD, &hi2c1, 0x4E);
+  TextLCD_Init(&hlcd, &hi2c1, 0x4E);
 
   while (1)
   {
