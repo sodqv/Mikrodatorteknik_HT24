@@ -1,39 +1,4 @@
-11:22:41 **** Incremental Build of configuration Debug for project lab4_LCD ****
-make -j12 all 
-arm-none-eabi-gcc "../Core/Src/lcd.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/lcd.d" -MT"Core/Src/lcd.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/lcd.o"
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:248:8: warning: unused variable 'str' [-Wunused-variable]
-  248 |   char str[] = "hello world";
-      |        ^~~
-../Core/Src/main.c:246:14: warning: unused variable 'LETTERS_TOTAL' [-Wunused-variable]
-  246 |   const char LETTERS_TOTAL = 'Z' - 'A';
-      |              ^~~~~~~~~~~~~
-../Core/Src/main.c:245:14: warning: unused variable 'ASCII_CAPITAL_OFFSET' [-Wunused-variable]
-  245 |   const char ASCII_CAPITAL_OFFSET = 'A';
-      |              ^~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:244:8: warning: unused variable 'c' [-Wunused-variable]
-  244 |   char c = 0;
-      |        ^
-arm-none-eabi-gcc -o "lab4_LCD.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\LP\JTH\Mikrodatorteknik\Mikrodatorteknik_HT24\lab4_LCD\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="lab4_LCD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: lab4_LCD.elf
- 
-arm-none-eabi-size  lab4_LCD.elf 
-arm-none-eabi-objdump -h -S lab4_LCD.elf  > "lab4_LCD.list"
-   text	   data	    bss	    dec	    hex	filename
-  16960	     96	   2152	  19208	   4b08	lab4_LCD.elf
-Finished building: default.size.stdout
- 
-Finished building: lab4_LCD.list
- 
-11:22:48 **** Incremental Build of configuration Debug for project lab4_LCD ****
-make -j12 all 
-arm-none-eabi-size  lab4_LCD.elf 
-   text	   data	    bss	    dec	    hex	filename
-  16960	     96	   2152	  19208	   4b08	lab4_LCD.elf
-Finished building: default.size.stdout
- 
-11:26:07 **** Incremental Build of configuration Debug for project lab4_LCD ****
+12:36:28 **** Incremental Build of configuration Debug for project lab4_LCD ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/lcd.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/lcd.d" -MT"Core/Src/lcd.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/lcd.o"
 arm-none-eabi-gcc -o "lab4_LCD.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\LP\JTH\Mikrodatorteknik\Mikrodatorteknik_HT24\lab4_LCD\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="lab4_LCD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
@@ -42,143 +7,20 @@ Finished building target: lab4_LCD.elf
 arm-none-eabi-size  lab4_LCD.elf 
 arm-none-eabi-objdump -h -S lab4_LCD.elf  > "lab4_LCD.list"
    text	   data	    bss	    dec	    hex	filename
-  16960	     96	   2152	  19208	   4b08	lab4_LCD.elf
+  17168	     96	   2152	  19416	   4bd8	lab4_LCD.elf
 Finished building: default.size.stdout
  
 Finished building: lab4_LCD.list
  
-11:26:21 **** Incremental Build of configuration Debug for project lab4_LCD ****
+12:36:30 **** Incremental Build of configuration Debug for project lab4_LCD ****
 make -j12 all 
 arm-none-eabi-size  lab4_LCD.elf 
    text	   data	    bss	    dec	    hex	filename
-  16960	     96	   2152	  19208	   4b08	lab4_LCD.elf
+  17168	     96	   2152	  19416	   4bd8	lab4_LCD.elf
 Finished building: default.size.stdout
  
-11:28:02 **** Incremental Build of configuration Debug for project lab4_LCD ****
+12:37:05 **** Incremental Build of configuration Debug for project lab4_LCD ****
 make -j12 all 
-arm-none-eabi-gcc "../Core/Src/lcd.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/lcd.d" -MT"Core/Src/lcd.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/lcd.o"
-../Core/Src/lcd.c: In function 'TextLCD_SetDDRAMAdr':
-../Core/Src/lcd.c:139:17: warning: unused variable 'command' [-Wunused-variable]
-  139 |         uint8_t command = 0x80 | adr;
-      |                 ^~~~~~~
-arm-none-eabi-gcc -o "lab4_LCD.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\LP\JTH\Mikrodatorteknik\Mikrodatorteknik_HT24\lab4_LCD\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="lab4_LCD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: lab4_LCD.elf
- 
-arm-none-eabi-size  lab4_LCD.elf 
-arm-none-eabi-objdump -h -S lab4_LCD.elf  > "lab4_LCD.list"
-   text	   data	    bss	    dec	    hex	filename
-  16960	     96	   2152	  19208	   4b08	lab4_LCD.elf
-Finished building: default.size.stdout
- 
-Finished building: lab4_LCD.list
- 
-11:30:27 **** Incremental Build of configuration Debug for project lab4_LCD ****
-make -j12 all 
-arm-none-eabi-gcc "../Core/Src/lcd.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/lcd.d" -MT"Core/Src/lcd.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/lcd.o"
-../Core/Src/lcd.c: In function 'TextLCD_SetDDRAMAdr':
-../Core/Src/lcd.c:141:17: warning: unused variable 'command' [-Wunused-variable]
-  141 |         uint8_t command = 0x80 | adr;
-      |                 ^~~~~~~
-arm-none-eabi-gcc -o "lab4_LCD.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\LP\JTH\Mikrodatorteknik\Mikrodatorteknik_HT24\lab4_LCD\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="lab4_LCD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: lab4_LCD.elf
- 
-arm-none-eabi-size  lab4_LCD.elf 
-arm-none-eabi-objdump -h -S lab4_LCD.elf  > "lab4_LCD.list"
-   text	   data	    bss	    dec	    hex	filename
-  16960	     96	   2152	  19208	   4b08	lab4_LCD.elf
-Finished building: default.size.stdout
- 
-Finished building: lab4_LCD.list
- 
-11:31:01 **** Incremental Build of configuration Debug for project lab4_LCD ****
-make -j12 all 
-arm-none-eabi-gcc "../Core/Src/lcd.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/lcd.d" -MT"Core/Src/lcd.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/lcd.o"
-arm-none-eabi-gcc -o "lab4_LCD.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\LP\JTH\Mikrodatorteknik\Mikrodatorteknik_HT24\lab4_LCD\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="lab4_LCD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: lab4_LCD.elf
- 
-arm-none-eabi-size  lab4_LCD.elf 
-arm-none-eabi-objdump -h -S lab4_LCD.elf  > "lab4_LCD.list"
-   text	   data	    bss	    dec	    hex	filename
-  16968	     96	   2152	  19216	   4b10	lab4_LCD.elf
-Finished building: default.size.stdout
- 
-Finished building: lab4_LCD.list
- 
-11:32:18 **** Incremental Build of configuration Debug for project lab4_LCD ****
-make -j12 all 
-arm-none-eabi-gcc "../Core/Src/lcd.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/lcd.d" -MT"Core/Src/lcd.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/lcd.o"
-arm-none-eabi-gcc -o "lab4_LCD.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\LP\JTH\Mikrodatorteknik\Mikrodatorteknik_HT24\lab4_LCD\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="lab4_LCD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: lab4_LCD.elf
- 
-arm-none-eabi-size  lab4_LCD.elf 
-arm-none-eabi-objdump -h -S lab4_LCD.elf  > "lab4_LCD.list"
-   text	   data	    bss	    dec	    hex	filename
-  16968	     96	   2152	  19216	   4b10	lab4_LCD.elf
-Finished building: default.size.stdout
- 
-Finished building: lab4_LCD.list
- 
-11:36:03 **** Incremental Build of configuration Debug for project lab4_LCD ****
-make -j12 all 
-arm-none-eabi-gcc "../Core/Src/lcd.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/lcd.d" -MT"Core/Src/lcd.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/lcd.o"
-../Core/Src/lcd.c: In function 'TextLCD_Init':
-../Core/Src/lcd.c:117:38: error: 'B' undeclared (first use in this function); did you mean 'BT'?
-  117 |         TextLCD_SendByte(hlcd, 0x0F, B); //Display on, Cursor On, Blink on
-      |                                      ^
-      |                                      BT
-../Core/Src/lcd.c:117:38: note: each undeclared identifier is reported only once for each function it appears in
-make: *** [Core/Src/subdir.mk:37: Core/Src/lcd.o] Error 1
-"make -j12 all" terminated with exit code 2. Build might be incomplete.
-11:36:14 **** Incremental Build of configuration Debug for project lab4_LCD ****
-make -j12 all 
-arm-none-eabi-gcc "../Core/Src/lcd.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/lcd.d" -MT"Core/Src/lcd.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/lcd.o"
-arm-none-eabi-gcc -o "lab4_LCD.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\LP\JTH\Mikrodatorteknik\Mikrodatorteknik_HT24\lab4_LCD\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="lab4_LCD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: lab4_LCD.elf
- 
-arm-none-eabi-size  lab4_LCD.elf 
-arm-none-eabi-objdump -h -S lab4_LCD.elf  > "lab4_LCD.list"
-   text	   data	    bss	    dec	    hex	filename
-  16968	     96	   2152	  19216	   4b10	lab4_LCD.elf
-Finished building: default.size.stdout
- 
-Finished building: lab4_LCD.list
- 
-11:39:26 **** Incremental Build of configuration Debug for project lab4_LCD ****
-make -j12 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:273:34: warning: passing argument 2 of 'TextLCD_PutStr' from incompatible pointer type [-Wincompatible-pointer-types]
-  273 |           TextLCD_PutStr(&myLCD, &str);         // put string
-      |                                  ^~~~
-      |                                  |
-      |                                  char (*)[12]
-In file included from ../Core/Src/main.c:21:
-../Core/Inc/lcd.h:50:61: note: expected 'char *' but argument is of type 'char (*)[12]'
-   50 | void TextLCD_PutStr             (TextLCDType * hlcd, char * str);
-      |                                                      ~~~~~~~^~~
-../Core/Src/main.c:246:14: warning: unused variable 'LETTERS_TOTAL' [-Wunused-variable]
-  246 |   const char LETTERS_TOTAL = 'Z' - 'A';
-      |              ^~~~~~~~~~~~~
-../Core/Src/main.c:245:14: warning: unused variable 'ASCII_CAPITAL_OFFSET' [-Wunused-variable]
-  245 |   const char ASCII_CAPITAL_OFFSET = 'A';
-      |              ^~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:244:8: warning: unused variable 'c' [-Wunused-variable]
-  244 |   char c = 0;
-      |        ^
-arm-none-eabi-gcc -o "lab4_LCD.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\LP\JTH\Mikrodatorteknik\Mikrodatorteknik_HT24\lab4_LCD\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="lab4_LCD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: lab4_LCD.elf
- 
-arm-none-eabi-size  lab4_LCD.elf 
-arm-none-eabi-objdump -h -S lab4_LCD.elf  > "lab4_LCD.list"
-   text	   data	    bss	    dec	    hex	filename
-  17060	     96	   2152	  19308	   4b6c	lab4_LCD.elf
-Finished building: default.size.stdout
- 
-Finished building: lab4_LCD.list
- 
-11:44:18 **** Incremental Build of configuration Debug for project lab4_LCD ****
-make -j12 all 
-arm-none-eabi-gcc "../Core/Src/lcd.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/lcd.d" -MT"Core/Src/lcd.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/lcd.o"
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'main':
 ../Core/Src/main.c:272:34: warning: passing argument 2 of 'TextLCD_PutStr' from incompatible pointer type [-Wincompatible-pointer-types]
@@ -205,7 +47,7 @@ Finished building target: lab4_LCD.elf
 arm-none-eabi-size  lab4_LCD.elf 
 arm-none-eabi-objdump -h -S lab4_LCD.elf  > "lab4_LCD.list"
    text	   data	    bss	    dec	    hex	filename
-  17100	     96	   2152	  19348	   4b94	lab4_LCD.elf
+  17168	     96	   2152	  19416	   4bd8	lab4_LCD.elf
 Finished building: default.size.stdout
  
 Finished building: lab4_LCD.list

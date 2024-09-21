@@ -279,10 +279,6 @@ int main(void)
 
 	  TextLCD_Clear(&myLCD);
 
-	  wait_for_button_press();
-
-	  TextLCD_Position(&myLCD, 5, 1);
-
 
 
 

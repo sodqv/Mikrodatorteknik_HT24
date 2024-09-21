@@ -281,7 +281,7 @@ int main(void)
 
 	  wait_for_button_press();
 
-	  TextLCD_Position(&myLCD, 5, 1);
+	  TextLCD_Position(&myLCD, 2, 1);
 
 
 

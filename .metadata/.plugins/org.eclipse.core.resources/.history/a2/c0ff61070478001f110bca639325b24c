@@ -148,22 +148,14 @@ void TextLCD_SetDDRAMAdr(TextLCDType * hlcd, uint8_t adr)
 
 void TextLCD_Position	(TextLCDType * hlcd, int col, int row)
 {
-	int index;
+	int number_of_col = 16;
 
-	if (row == 0)
-	{
-		index = col;
-	}
-	else if (row == 1)
-	{
-		index = 0x40 + col;		//rad 2 börjar på 0x40
-	}
-	else
-	{
-		return;
-	}
+	int index = (row * number_of_col) + col;
+
 
 	TextLCD_SetDDRAMAdr(hlcd, index);
+
+
 }
 
 
