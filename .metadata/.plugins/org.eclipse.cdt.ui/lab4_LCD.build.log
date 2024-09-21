@@ -1,10 +1,10 @@
-10:49:20 **** Incremental Build of configuration Debug for project lab4_LCD ****
+11:10:12 **** Incremental Build of configuration Debug for project lab4_LCD ****
 make -j12 all 
 arm-none-eabi-size  lab4_LCD.elf 
    text	   data	    bss	    dec	    hex	filename
-  16952	     96	   2152	  19200	   4b00	lab4_LCD.elf
+  17000	     96	   2152	  19248	   4b30	lab4_LCD.elf
 Finished building: default.size.stdout
  
 
-10:49:21 Build Finished. 0 errors, 0 warnings. (took 202ms)
+11:10:12 Build Finished. 0 errors, 0 warnings. (took 204ms)
 

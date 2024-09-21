@@ -274,7 +274,7 @@ int main(void)
 	  /* Put string
 	   */
 
-	  TextLCD_PutStr(&myLCD, &str);
+TextLCD_PutStr(&myLCD, &str);
 
 
 

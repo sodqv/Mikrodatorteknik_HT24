@@ -245,8 +245,6 @@ int main(void)
   const char ASCII_CAPITAL_OFFSET = 'A';
   const char LETTERS_TOTAL = 'Z' - 'A';
 
-  char str[] = "hello world";
-
 
   while (1)
   {
@@ -264,17 +262,12 @@ int main(void)
 
 	  // för test av LCD display
 	  wait_for_button_press();
-
-
-	  /* Put char
 	  TextLCD_PutChar(&myLCD, c + ASCII_CAPITAL_OFFSET);
-	  c = (c+1) % LETTERS_TOTAL; */
+	  c = (c+1) % LETTERS_TOTAL;
 
 
-	  /* Put string
-	   */
 
-	  TextLCD_PutStr(&myLCD, &str);
+
 
 
 

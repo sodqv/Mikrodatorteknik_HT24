@@ -153,13 +153,7 @@ void TextLCD_PutChar	(TextLCDType * hlcd, char c)
 
 void TextLCD_PutStr		(TextLCDType * hlcd, char * str)
 {
-
-	while (*str)
-	{
-		TextLCD_PutChar(hlcd, *str);
-		str++;
-	}
-
+	TextLCD_SendByte(hlcd, str, 1);
 }
 
 

@@ -1,4 +1,4 @@
-10:49:16 **** Incremental Build of configuration Debug for project lab4_LCD ****
+11:10:09 **** Incremental Build of configuration Debug for project lab4_LCD ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/lcd.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/lcd.d" -MT"Core/Src/lcd.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/lcd.o"
 arm-none-eabi-gcc -o "lab4_LCD.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\LP\JTH\Mikrodatorteknik\Mikrodatorteknik_HT24\lab4_LCD\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="lab4_LCD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
@@ -7,15 +7,15 @@ Finished building target: lab4_LCD.elf
 arm-none-eabi-size  lab4_LCD.elf 
 arm-none-eabi-objdump -h -S lab4_LCD.elf  > "lab4_LCD.list"
    text	   data	    bss	    dec	    hex	filename
-  16952	     96	   2152	  19200	   4b00	lab4_LCD.elf
+  17000	     96	   2152	  19248	   4b30	lab4_LCD.elf
 Finished building: default.size.stdout
  
 Finished building: lab4_LCD.list
  
-10:49:20 **** Incremental Build of configuration Debug for project lab4_LCD ****
+11:10:12 **** Incremental Build of configuration Debug for project lab4_LCD ****
 make -j12 all 
 arm-none-eabi-size  lab4_LCD.elf 
    text	   data	    bss	    dec	    hex	filename
-  16952	     96	   2152	  19200	   4b00	lab4_LCD.elf
+  17000	     96	   2152	  19248	   4b30	lab4_LCD.elf
 Finished building: default.size.stdout
  

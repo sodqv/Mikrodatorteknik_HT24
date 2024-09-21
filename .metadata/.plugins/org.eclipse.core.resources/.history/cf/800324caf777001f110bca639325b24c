@@ -131,7 +131,7 @@ void TextLCD_Home		(TextLCDType * hlcd)
 
 void TextLCD_Clear		(TextLCDType * hlcd)
 {
-	//TextLCD_SendByte(hlcd);
+
 }
 
 void TextLCD_SetDDRAMAdr(TextLCDType * hlcd, uint8_t adr)
@@ -153,12 +153,6 @@ void TextLCD_PutChar	(TextLCDType * hlcd, char c)
 
 void TextLCD_PutStr		(TextLCDType * hlcd, char * str)
 {
-
-	while (*str)
-	{
-		TextLCD_PutChar(hlcd, *str);
-		str++;
-	}
 
 }
 
