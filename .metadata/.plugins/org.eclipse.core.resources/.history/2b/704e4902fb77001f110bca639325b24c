@@ -274,10 +274,8 @@ int main(void)
 	  /* Put string
 	   TextLCD_PutStr(&myLCD, &str);*/
 
-	  /* Set cursor
 
-	   */
-	  TextLCD_SetDDRAMAdr(&myLCD, 0x40);
+
 
 
     /* USER CODE END WHILE */

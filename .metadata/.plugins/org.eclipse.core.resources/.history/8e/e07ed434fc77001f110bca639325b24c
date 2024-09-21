@@ -114,7 +114,7 @@ void TextLCD_Init(
 	TextLCD_SendByte(hlcd, 0x06, 0);
 	TextLCD_SendByte(hlcd, 0x0C, 0);
 
-	TextLCD_SendByte(hlcd, 0x0F, GPIO_PIN_RESET); //Display on, Cursor On, Blink on
+	TextLCD_SendByte(hlcd, 0x0F, GPIO_PIN_RESET); // Display on, cursor on, blink on
 }
 
 
@@ -140,7 +140,7 @@ void TextLCD_SetDDRAMAdr(TextLCDType * hlcd, uint8_t adr)
 {
 	uint8_t command = 0x80 | adr;
 
-	TextLCD_SendByte(hlcd, command, 0);
+	//TextLCD_SendByte(hlcd, command, 0);
 
 }
 
