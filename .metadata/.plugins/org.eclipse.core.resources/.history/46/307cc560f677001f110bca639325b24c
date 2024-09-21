@@ -147,7 +147,7 @@ void TextLCD_Position	(TextLCDType * hlcd, int col, int row)
 
 void TextLCD_PutChar	(TextLCDType * hlcd, char c)
 {
-	TextLCD_SendByte(hlcd, c, 1);
+
 }
 
 

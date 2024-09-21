@@ -260,9 +260,9 @@ int main(void)
 
 
 
-	  // för test av LCD display
+	 // för test av LCD display
 	  wait_for_button_press();
-	  TextLCD_PutChar(&myLCD, c + ASCII_CAPITAL_OFFSET);
+	  TextLCD_PutChar(&lcd, c + ASCII_CAPITAL_OFFSET);
 	  c = (c+1) % LETTERS_TOTAL;
 
 
