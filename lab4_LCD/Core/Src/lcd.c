@@ -128,7 +128,7 @@ void TextLCD_SetBacklightFlag(GPIO_PinState bt)
 
 void TextLCD_Home		(TextLCDType * hlcd)
 {
-
+	TextLCD_Position(hlcd, 0, 0);
 }
 
 
