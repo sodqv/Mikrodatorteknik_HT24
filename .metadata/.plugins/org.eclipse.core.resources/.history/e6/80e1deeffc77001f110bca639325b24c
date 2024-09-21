@@ -114,7 +114,7 @@ void TextLCD_Init(
 	TextLCD_SendByte(hlcd, 0x06, 0);
 	TextLCD_SendByte(hlcd, 0x0C, 0);
 
-	TextLCD_SendByte(hlcd, 0x0F, 0xB); //Display on, Cursor On, Blink on
+	TextLCD_SendByte(hlcd, 0x0F, B); //Display on, Cursor On, Blink on
 }
 
 
@@ -133,15 +133,15 @@ void TextLCD_Home		(TextLCDType * hlcd)
 
 void TextLCD_Clear		(TextLCDType * hlcd)
 {
-	TextLCD_SendByte(hlcd, 0x1, 0);
+	//TextLCD_SendByte(hlcd);
 }
-
 
 void TextLCD_SetDDRAMAdr(TextLCDType * hlcd, uint8_t adr)
 {
 	uint8_t command = 0x80 | adr;
 
 	TextLCD_SendByte(hlcd, command, 0);
+
 }
 
 

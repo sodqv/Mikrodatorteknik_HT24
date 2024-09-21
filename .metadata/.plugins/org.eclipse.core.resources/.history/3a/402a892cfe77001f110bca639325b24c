@@ -136,12 +136,12 @@ void TextLCD_Clear		(TextLCDType * hlcd)
 	TextLCD_SendByte(hlcd, 0x1, 0);
 }
 
-
 void TextLCD_SetDDRAMAdr(TextLCDType * hlcd, uint8_t adr)
 {
 	uint8_t command = 0x80 | adr;
 
 	TextLCD_SendByte(hlcd, command, 0);
+
 }
 
 

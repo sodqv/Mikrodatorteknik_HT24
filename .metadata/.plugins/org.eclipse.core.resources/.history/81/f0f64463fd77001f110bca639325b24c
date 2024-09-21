@@ -266,21 +266,18 @@ int main(void)
 	  wait_for_button_press();
 
 
-	  //TextLCD_PutChar(&myLCD, c + ASCII_CAPITAL_OFFSET);	// put char
-	  //c = (c+1) % LETTERS_TOTAL;
-
-	  TextLCD_PutStr(&myLCD, &str);			// put string
-
-	  wait_for_button_press();
-
-	  TextLCD_SetDDRAMAdr(&myLCD, 0x40);	// set cursor
-
-	  wait_for_button_press();
-
-	  TextLCD_Clear(&myLCD);
+	  /* Put char
+	  TextLCD_PutChar(&myLCD, c + ASCII_CAPITAL_OFFSET);
+	  c = (c+1) % LETTERS_TOTAL; */
 
 
+	  /* Put string
+	   TextLCD_PutStr(&myLCD, &str);*/
 
+	  /* Set cursor
+
+	   */
+	  TextLCD_SetDDRAMAdr(&myLCD, 0x40);
 
 
     /* USER CODE END WHILE */
