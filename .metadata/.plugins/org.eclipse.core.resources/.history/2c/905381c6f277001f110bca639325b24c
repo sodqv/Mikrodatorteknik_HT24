@@ -181,12 +181,12 @@ void wait_for_button_press()
 		/*  do nothing  */
 	}
 
-
+	/*
 	while(is_button_pressed())
 	{
 		// do nothing
 	}
-
+*/
 	button_pressed = 0;
 }
 
@@ -255,7 +255,7 @@ int main(void)
 
 
 
-	 // endast för test av toggle button
+
 	 for (int i= 0; i < 5; i ++)
 	 {
 		 wait_for_button_press();
