@@ -14,23 +14,31 @@ void My_Delay(uint32_t mysec)
 {
 //	HAL_Delay( 1 + (mysec / 1000) );
 
+
+	uint16_t counter = 0;
 	uint16_t cr1 = TIM2 -> CR1;
 
 	//stop the counter
-	cr1 = cr1 & ~0x0001;
+	cr1 = cr1 |= 0;
 	TIM2 -> CR1 = cr1;
 
-	TIM2 -> CNT = 0;
 
 	//start the counter
-	cr1 = cr1 | 0x0001;
+	cr1 = cr1 |= 1;
 	TIM2 -> CR1 = cr1;
 
 
-	while (TIM2 -> CNT < mysec)
+	if (counter < mysec)
 	{
-
+		counter++;
 	}
+	else
+	{
+		//start timer
+		//HAL_TIM_Base_Start_IT(&htim2);
+	}
+
+
 }
 
 #define BIT_BT   0x08
@@ -106,6 +114,12 @@ void TextLCD_Init(
 		I2C_HandleTypeDef   *   hi2c,
 		uint8_t                 device_address)
 {
+
+	//för test
+	uint32_t dly = 5 * 1000 * 1000; //5 seconds
+	My_Delay(dly);
+
+
 
 	hlcd->hi2c           = hi2c;
 	hlcd->device_address = device_address;

@@ -107,6 +107,12 @@ void TextLCD_Init(
 		uint8_t                 device_address)
 {
 
+	//för test
+	uint32_t dly = 5 * 1000 * 1000; //5 seconds
+	My_Delay(dly);
+
+
+
 	hlcd->hi2c           = hi2c;
 	hlcd->device_address = device_address;
 

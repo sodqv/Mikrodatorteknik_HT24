@@ -1,158 +1,28 @@
-15:50:06 **** Incremental Build of configuration Debug for project lab4_LCD ****
+14:40:26 **** Incremental Build of configuration Debug for project lab4_LCD ****
 make -j12 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:296:34: warning: passing argument 2 of 'TextLCD_PutStr' from incompatible pointer type [-Wincompatible-pointer-types]
-  296 |           TextLCD_PutStr(&myLCD, &str);                 // put string
-      |                                  ^~~~
-      |                                  |
-      |                                  char (*)[12]
-In file included from ../Core/Src/main.c:21:
-../Core/Inc/lcd.h:50:61: note: expected 'char *' but argument is of type 'char (*)[12]'
-   50 | void TextLCD_PutStr             (TextLCDType * hlcd, char * str);
-      |                                                      ~~~~~~~^~~
+arm-none-eabi-gcc "../Core/Src/lcd.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/lcd.d" -MT"Core/Src/lcd.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/lcd.o"
 arm-none-eabi-gcc -o "lab4_LCD.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\LP\JTH\Mikrodatorteknik\Mikrodatorteknik_HT24\lab4_LCD\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="lab4_LCD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: lab4_LCD.elf
  
 arm-none-eabi-size  lab4_LCD.elf 
 arm-none-eabi-objdump -h -S lab4_LCD.elf  > "lab4_LCD.list"
    text	   data	    bss	    dec	    hex	filename
-  17484	     96	   2152	  19732	   4d14	lab4_LCD.elf
+  17168	     96	   2224	  19488	   4c20	lab4_LCD.elf
 Finished building: default.size.stdout
  
 Finished building: lab4_LCD.list
  
-15:50:10 **** Incremental Build of configuration Debug for project lab4_LCD ****
+14:40:32 **** Incremental Build of configuration Debug for project lab4_LCD ****
 make -j12 all 
 arm-none-eabi-size  lab4_LCD.elf 
    text	   data	    bss	    dec	    hex	filename
-  17484	     96	   2152	  19732	   4d14	lab4_LCD.elf
+  17168	     96	   2224	  19488	   4c20	lab4_LCD.elf
 Finished building: default.size.stdout
  
-15:53:48 **** Incremental Build of configuration Debug for project lab4_LCD ****
-make -j12 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:301:34: warning: passing argument 2 of 'TextLCD_PutStr' from incompatible pointer type [-Wincompatible-pointer-types]
-  301 |           TextLCD_PutStr(&myLCD, &str);                 // put string
-      |                                  ^~~~
-      |                                  |
-      |                                  char (*)[12]
-In file included from ../Core/Src/main.c:21:
-../Core/Inc/lcd.h:50:61: note: expected 'char *' but argument is of type 'char (*)[12]'
-   50 | void TextLCD_PutStr             (TextLCDType * hlcd, char * str);
-      |                                                      ~~~~~~~^~~
-arm-none-eabi-gcc -o "lab4_LCD.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\LP\JTH\Mikrodatorteknik\Mikrodatorteknik_HT24\lab4_LCD\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="lab4_LCD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: lab4_LCD.elf
- 
-arm-none-eabi-size  lab4_LCD.elf 
-arm-none-eabi-objdump -h -S lab4_LCD.elf  > "lab4_LCD.list"
-   text	   data	    bss	    dec	    hex	filename
-  17484	     96	   2152	  19732	   4d14	lab4_LCD.elf
-Finished building: default.size.stdout
- 
-Finished building: lab4_LCD.list
- 
-15:54:33 **** Incremental Build of configuration Debug for project lab4_LCD ****
-make -j12 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:301:34: warning: passing argument 2 of 'TextLCD_PutStr' from incompatible pointer type [-Wincompatible-pointer-types]
-  301 |           TextLCD_PutStr(&myLCD, &str);                 // put string
-      |                                  ^~~~
-      |                                  |
-      |                                  char (*)[12]
-In file included from ../Core/Src/main.c:21:
-../Core/Inc/lcd.h:50:61: note: expected 'char *' but argument is of type 'char (*)[12]'
-   50 | void TextLCD_PutStr             (TextLCDType * hlcd, char * str);
-      |                                                      ~~~~~~~^~~
-arm-none-eabi-gcc -o "lab4_LCD.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\LP\JTH\Mikrodatorteknik\Mikrodatorteknik_HT24\lab4_LCD\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="lab4_LCD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: lab4_LCD.elf
- 
-arm-none-eabi-size  lab4_LCD.elf 
-arm-none-eabi-objdump -h -S lab4_LCD.elf  > "lab4_LCD.list"
-   text	   data	    bss	    dec	    hex	filename
-  17260	     96	   2152	  19508	   4c34	lab4_LCD.elf
-Finished building: default.size.stdout
- 
-Finished building: lab4_LCD.list
- 
-15:55:01 **** Incremental Build of configuration Debug for project lab4_LCD ****
+14:41:38 **** Incremental Build of configuration Debug for project lab4_LCD ****
 make -j12 all 
 arm-none-eabi-size  lab4_LCD.elf 
    text	   data	    bss	    dec	    hex	filename
-  17260	     96	   2152	  19508	   4c34	lab4_LCD.elf
+  17168	     96	   2224	  19488	   4c20	lab4_LCD.elf
 Finished building: default.size.stdout
- 
-15:56:04 **** Incremental Build of configuration Debug for project lab4_LCD ****
-make -j12 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:294:34: warning: passing argument 2 of 'TextLCD_PutStr' from incompatible pointer type [-Wincompatible-pointer-types]
-  294 |           TextLCD_PutStr(&myLCD, &str);                 // put string
-      |                                  ^~~~
-      |                                  |
-      |                                  char (*)[12]
-In file included from ../Core/Src/main.c:21:
-../Core/Inc/lcd.h:50:61: note: expected 'char *' but argument is of type 'char (*)[12]'
-   50 | void TextLCD_PutStr             (TextLCDType * hlcd, char * str);
-      |                                                      ~~~~~~~^~~
-arm-none-eabi-gcc -o "lab4_LCD.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\LP\JTH\Mikrodatorteknik\Mikrodatorteknik_HT24\lab4_LCD\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="lab4_LCD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: lab4_LCD.elf
- 
-arm-none-eabi-size  lab4_LCD.elf 
-arm-none-eabi-objdump -h -S lab4_LCD.elf  > "lab4_LCD.list"
-   text	   data	    bss	    dec	    hex	filename
-  17260	     96	   2152	  19508	   4c34	lab4_LCD.elf
-Finished building: default.size.stdout
- 
-Finished building: lab4_LCD.list
- 
-15:56:49 **** Incremental Build of configuration Debug for project lab4_LCD ****
-make -j12 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:294:34: warning: passing argument 2 of 'TextLCD_PutStr' from incompatible pointer type [-Wincompatible-pointer-types]
-  294 |           TextLCD_PutStr(&myLCD, &str);                 // put string
-      |                                  ^~~~
-      |                                  |
-      |                                  char (*)[12]
-In file included from ../Core/Src/main.c:21:
-../Core/Inc/lcd.h:50:61: note: expected 'char *' but argument is of type 'char (*)[12]'
-   50 | void TextLCD_PutStr             (TextLCDType * hlcd, char * str);
-      |                                                      ~~~~~~~^~~
-arm-none-eabi-gcc -o "lab4_LCD.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\LP\JTH\Mikrodatorteknik\Mikrodatorteknik_HT24\lab4_LCD\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="lab4_LCD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: lab4_LCD.elf
- 
-arm-none-eabi-size  lab4_LCD.elf 
-arm-none-eabi-objdump -h -S lab4_LCD.elf  > "lab4_LCD.list"
-   text	   data	    bss	    dec	    hex	filename
-  17484	     96	   2152	  19732	   4d14	lab4_LCD.elf
-Finished building: default.size.stdout
- 
-Finished building: lab4_LCD.list
- 
-15:57:59 **** Incremental Build of configuration Debug for project lab4_LCD ****
-make -j12 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:294:34: warning: passing argument 2 of 'TextLCD_PutStr' from incompatible pointer type [-Wincompatible-pointer-types]
-  294 |           TextLCD_PutStr(&myLCD, &str);                 // put string
-      |                                  ^~~~
-      |                                  |
-      |                                  char (*)[12]
-In file included from ../Core/Src/main.c:21:
-../Core/Inc/lcd.h:50:61: note: expected 'char *' but argument is of type 'char (*)[12]'
-   50 | void TextLCD_PutStr             (TextLCDType * hlcd, char * str);
-      |                                                      ~~~~~~~^~~
-arm-none-eabi-gcc -o "lab4_LCD.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\LP\JTH\Mikrodatorteknik\Mikrodatorteknik_HT24\lab4_LCD\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="lab4_LCD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: lab4_LCD.elf
- 
-arm-none-eabi-size  lab4_LCD.elf 
-arm-none-eabi-objdump -h -S lab4_LCD.elf  > "lab4_LCD.list"
-   text	   data	    bss	    dec	    hex	filename
-  17260	     96	   2152	  19508	   4c34	lab4_LCD.elf
-Finished building: default.size.stdout
- 
-Finished building: lab4_LCD.list
  
