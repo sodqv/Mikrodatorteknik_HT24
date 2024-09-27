@@ -1,46 +1,33 @@
-10:50:08 **** Incremental Build of configuration Debug for project lab5_ADC ****
+16:13:30 **** Incremental Build of configuration Debug for project lab5_ADC ****
 make -j12 all 
+arm-none-eabi-gcc "../Core/Src/lcd.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/lcd.d" -MT"Core/Src/lcd.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/lcd.o"
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'normalize_12bit':
-../Core/Src/main.c:95:9: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
-   95 |         sprintf(x_volt, "%.2f", normalized);            // formats the normalized value into the x_volt string
-      |         ^~~~~~~
-../Core/Src/main.c:22:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
-   21 | #include "lcd.h"
-  +++ |+#include <stdio.h>
-   22 | 
-../Core/Src/main.c:95:9: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
-   95 |         sprintf(x_volt, "%.2f", normalized);            // formats the normalized value into the x_volt string
-      |         ^~~~~~~
-../Core/Src/main.c:95:9: note: include '<stdio.h>' or provide a declaration of 'sprintf'
-../Core/Src/main.c: In function 'normalize_12bit_posneg':
-../Core/Src/main.c:105:9: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
-  105 |         sprintf(x_volt, "%.2f", normalized);
-      |         ^~~~~~~
-../Core/Src/main.c:105:9: note: include '<stdio.h>' or provide a declaration of 'sprintf'
-../Core/Src/main.c: In function 'normalize_12bit':
-../Core/Src/main.c:96:1: warning: control reaches end of non-void function [-Wreturn-type]
-   96 | }
-      | ^
-../Core/Src/main.c: In function 'normalize_12bit_posneg':
-../Core/Src/main.c:106:1: warning: control reaches end of non-void function [-Wreturn-type]
-  106 | }
-      | ^
-arm-none-eabi-gcc -o "lab5_ADC.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\LP\JTH\Mikrodatorteknik\Mikrodatorteknik_HT24\lab5_ADC\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="lab5_ADC.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: lab5_ADC.elf
- 
-arm-none-eabi-size  lab5_ADC.elf 
-arm-none-eabi-objdump -h -S lab5_ADC.elf  > "lab5_ADC.list"
-   text	   data	    bss	    dec	    hex	filename
-  30372	    472	   2240	  33084	   813c	lab5_ADC.elf
-Finished building: default.size.stdout
- 
-Finished building: lab5_ADC.list
- 
-10:50:12 **** Incremental Build of configuration Debug for project lab5_ADC ****
-make -j12 all 
-arm-none-eabi-size  lab5_ADC.elf 
-   text	   data	    bss	    dec	    hex	filename
-  30372	    472	   2240	  33084	   813c	lab5_ADC.elf
-Finished building: default.size.stdout
- 
+In file included from ../Core/Src/lcd.c:2:
+../Core/Inc/lcd.h:15:9: error: unknown type name 'I2C_HandleTypeDef'
+   15 |         I2C_HandleTypeDef       *       hi2c;
+      |         ^~~~~~~~~~~~~~~~~
+../Core/Inc/lcd.h:27:37: error: unknown type name 'I2C_HandleTypeDef'; did you mean 'DMA_HandleTypeDef'?
+   27 | void TextLCD_Init(TextLCDType *lcd, I2C_HandleTypeDef *hi2c, uint8_t DevAddress);
+      |                                     ^~~~~~~~~~~~~~~~~
+      |                                     DMA_HandleTypeDef
+In file included from ../Core/Src/main.c:24:
+../Core/Inc/lcd.h:15:9: error: unknown type name 'I2C_HandleTypeDef'
+   15 |         I2C_HandleTypeDef       *       hi2c;
+      |         ^~~~~~~~~~~~~~~~~
+../Core/Inc/lcd.h:27:37: error: unknown type name 'I2C_HandleTypeDef'; did you mean 'DMA_HandleTypeDef'?
+   27 | void TextLCD_Init(TextLCDType *lcd, I2C_HandleTypeDef *hi2c, uint8_t DevAddress);
+      |                                     ^~~~~~~~~~~~~~~~~
+      |                                     DMA_HandleTypeDef
+make: *** [Core/Src/subdir.mk:37: Core/Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+../Core/Src/lcd.c: In function 'TextLCD_SendNibbleWithPulseOnE':
+../Core/Src/lcd.c:68:9: warning: implicit declaration of function 'HAL_I2C_Master_Transmit' [-Wimplicit-function-declaration]
+   68 |         HAL_I2C_Master_Transmit(hlcd->hi2c, hlcd->device_address, &data, 1, 1000);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/lcd.c: At top level:
+../Core/Src/lcd.c:106:17: error: unknown type name 'I2C_HandleTypeDef'; did you mean 'DMA_HandleTypeDef'?
+  106 |                 I2C_HandleTypeDef   *   hi2c,
+      |                 ^~~~~~~~~~~~~~~~~
+      |                 DMA_HandleTypeDef
+make: *** [Core/Src/subdir.mk:37: Core/Src/lcd.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.

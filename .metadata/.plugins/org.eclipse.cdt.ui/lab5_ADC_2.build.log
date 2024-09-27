@@ -1,0 +1,10 @@
+14:34:41 **** Incremental Build of configuration Debug for project lab5_ADC_2 ****
+make -j12 all 
+arm-none-eabi-size  lab5_ADC_2.elf 
+   text	   data	    bss	    dec	    hex	filename
+  10420	     12	   1716	  12148	   2f74	lab5_ADC_2.elf
+Finished building: default.size.stdout
+ 
+
+14:34:42 Build Finished. 0 errors, 0 warnings. (took 196ms)
+

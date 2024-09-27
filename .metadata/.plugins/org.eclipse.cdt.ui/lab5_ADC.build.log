@@ -1,10 +1,36 @@
-10:50:12 **** Incremental Build of configuration Debug for project lab5_ADC ****
+16:13:30 **** Incremental Build of configuration Debug for project lab5_ADC ****
 make -j12 all 
-arm-none-eabi-size  lab5_ADC.elf 
-   text	   data	    bss	    dec	    hex	filename
-  30372	    472	   2240	  33084	   813c	lab5_ADC.elf
-Finished building: default.size.stdout
- 
+arm-none-eabi-gcc "../Core/Src/lcd.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/lcd.d" -MT"Core/Src/lcd.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/lcd.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+In file included from ../Core/Src/lcd.c:2:
+../Core/Inc/lcd.h:15:9: error: unknown type name 'I2C_HandleTypeDef'
+   15 |         I2C_HandleTypeDef       *       hi2c;
+      |         ^~~~~~~~~~~~~~~~~
+../Core/Inc/lcd.h:27:37: error: unknown type name 'I2C_HandleTypeDef'; did you mean 'DMA_HandleTypeDef'?
+   27 | void TextLCD_Init(TextLCDType *lcd, I2C_HandleTypeDef *hi2c, uint8_t DevAddress);
+      |                                     ^~~~~~~~~~~~~~~~~
+      |                                     DMA_HandleTypeDef
+In file included from ../Core/Src/main.c:24:
+../Core/Inc/lcd.h:15:9: error: unknown type name 'I2C_HandleTypeDef'
+   15 |         I2C_HandleTypeDef       *       hi2c;
+      |         ^~~~~~~~~~~~~~~~~
+../Core/Inc/lcd.h:27:37: error: unknown type name 'I2C_HandleTypeDef'; did you mean 'DMA_HandleTypeDef'?
+   27 | void TextLCD_Init(TextLCDType *lcd, I2C_HandleTypeDef *hi2c, uint8_t DevAddress);
+      |                                     ^~~~~~~~~~~~~~~~~
+      |                                     DMA_HandleTypeDef
+make: *** [Core/Src/subdir.mk:37: Core/Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+../Core/Src/lcd.c: In function 'TextLCD_SendNibbleWithPulseOnE':
+../Core/Src/lcd.c:68:9: warning: implicit declaration of function 'HAL_I2C_Master_Transmit' [-Wimplicit-function-declaration]
+   68 |         HAL_I2C_Master_Transmit(hlcd->hi2c, hlcd->device_address, &data, 1, 1000);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/lcd.c: At top level:
+../Core/Src/lcd.c:106:17: error: unknown type name 'I2C_HandleTypeDef'; did you mean 'DMA_HandleTypeDef'?
+  106 |                 I2C_HandleTypeDef   *   hi2c,
+      |                 ^~~~~~~~~~~~~~~~~
+      |                 DMA_HandleTypeDef
+make: *** [Core/Src/subdir.mk:37: Core/Src/lcd.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
 
-10:50:12 Build Finished. 0 errors, 0 warnings. (took 197ms)
+16:13:30 Build Failed. 8 errors, 1 warnings. (took 293ms)
 
