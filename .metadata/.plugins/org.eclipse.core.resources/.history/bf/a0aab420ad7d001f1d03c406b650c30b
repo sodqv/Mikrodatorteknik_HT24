@@ -57,16 +57,13 @@ UART_HandleTypeDef huart2;
 uint16_t adc_buffer[ADC_BUF_SIZE];
 int adc_buf_ix = 0;
 
-#define JOY_X_IX 0
-#define JOY_Y_IX 1
-#define LM35_IX 2
-
 TextLCDType myLCD;
 
 uint8_t callback_occured = 0;
 uint16_t max_volt = 4095;
 
-char volt[20];
+char x_volt[20];
+char y_volt[20];
 
 /* USER CODE END PV */
 
@@ -114,7 +111,7 @@ float normalize_12bit(uint16_t x)
 {
 	float normalized = ((float)x / max_volt);
 
-	sprintf(volt, "%.2f", normalized);		// formats the normalized value into the x_volt string
+	sprintf(x_volt, "%.2f", normalized);		// formats the normalized value into the x_volt string
 
 	return normalized;
 }
@@ -125,7 +122,7 @@ float normalize_12bit_posneg(uint16_t x)
 {
 	float normalized = 2 * ((float)x / max_volt) - 1;
 
-	sprintf(volt, "%.2f", normalized);
+	sprintf(x_volt, "%.2f", normalized);
 
 	return normalized;
 }
@@ -192,6 +189,8 @@ int main(void)
 
 	  if (callback_occured == 1)
 	  	  {
+	  		  	//TextLCD_Clear(&myLCD);
+
 
 	  			/* printar ut icke normaliserat värde från adc_buffer[0]
 	  		    char s[20];
@@ -201,19 +200,12 @@ int main(void)
 	  			 */
 
 
-	  			//x value
-	  			normalize_12bit_posneg(adc_buffer[JOY_X_IX]);
+	  			//send value to the normalization function
+	  			normalize_12bit_posneg(adc_buffer[0]);
 
 	  			//printar det normaliserade x-värdet
 	  		  	TextLCD_Home(&myLCD);
-	  			TextLCD_PutStr(&myLCD, volt);
-
-
-	  			//y value
-	  			normalize_12bit_posneg(adc_buffer[JOY_Y_IX]);
-
-	  			TextLCD_SetDDRAMAdr(&myLCD, 0x40);
-	  			TextLCD_PutStr(&myLCD, volt);
+	  			TextLCD_PutStr(&myLCD, x_volt);
 
 
 	  			HAL_Delay(100);

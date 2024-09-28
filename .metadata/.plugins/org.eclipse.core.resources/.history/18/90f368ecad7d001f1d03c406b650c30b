@@ -67,6 +67,7 @@ uint8_t callback_occured = 0;
 uint16_t max_volt = 4095;
 
 char volt[20];
+char y_volt[20];
 
 /* USER CODE END PV */
 
@@ -192,6 +193,8 @@ int main(void)
 
 	  if (callback_occured == 1)
 	  	  {
+	  		  	//TextLCD_Clear(&myLCD);
+
 
 	  			/* printar ut icke normaliserat värde från adc_buffer[0]
 	  		    char s[20];
@@ -209,7 +212,7 @@ int main(void)
 	  			TextLCD_PutStr(&myLCD, volt);
 
 
-	  			//y value
+	  			// y value
 	  			normalize_12bit_posneg(adc_buffer[JOY_Y_IX]);
 
 	  			TextLCD_SetDDRAMAdr(&myLCD, 0x40);
