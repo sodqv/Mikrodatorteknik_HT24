@@ -224,13 +224,11 @@ int main(void)
 	  			TextLCD_PutStr(&myLCD, volt);
 
 
-
 	  			//y value
 	  			normalize_12bit_posneg(adc_buffer[JOY_Y_IX]);
 
-	  			TextLCD_Position(&myLCD, 0, 1);
+	  			TextLCD_Position(&myLCD, 1, 0);
 	  			TextLCD_PutStr(&myLCD, volt);
-
 
 
 	  			//temperature
@@ -240,13 +238,11 @@ int main(void)
 	  			TextLCD_PutStr(&myLCD, temperature);
 
 
-
 	  			//light
 	  			normalize_12bit(adc_buffer[PHOTORES_IX]);
 
 	  			TextLCD_Position(&myLCD, 10, 1);
 	  			TextLCD_PutStr(&myLCD, light);
-
 
 
 	  			HAL_Delay(100);

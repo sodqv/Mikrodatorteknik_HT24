@@ -70,7 +70,6 @@ uint16_t max_volt = 4095;
 
 char volt[20];
 char temperature[20];
-char light[20];
 
 /* USER CODE END PV */
 
@@ -118,7 +117,7 @@ float normalize_12bit(uint16_t x)
 {
 	float normalized = ((float)x / max_volt);
 
-	sprintf(light, "%.2f", normalized);		// formats the normalized value into the x_volt string
+	sprintf(volt, "%.2f", normalized);		// formats the normalized value into the x_volt string
 
 	return normalized;
 }
@@ -224,29 +223,23 @@ int main(void)
 	  			TextLCD_PutStr(&myLCD, volt);
 
 
-
 	  			//y value
 	  			normalize_12bit_posneg(adc_buffer[JOY_Y_IX]);
 
-	  			TextLCD_Position(&myLCD, 0, 1);
+	  			TextLCD_Position(&myLCD, 1, 0);
 	  			TextLCD_PutStr(&myLCD, volt);
-
 
 
 	  			//temperature
 	  			lm35_to_celcius(adc_buffer[LM35_IX]);
 
-	  			TextLCD_Position(&myLCD, 10, 0);
+	  			TextLCD_Position(&myLCD, 11, 0);
 	  			TextLCD_PutStr(&myLCD, temperature);
 
 
-
 	  			//light
-	  			normalize_12bit(adc_buffer[PHOTORES_IX]);
-
-	  			TextLCD_Position(&myLCD, 10, 1);
-	  			TextLCD_PutStr(&myLCD, light);
-
+	  			TextLCD_Position(&myLCD, 11, 1);
+	  			TextLCD_PutStr(&myLCD, adc_buffer[PHOTORES_IX]);
 
 
 	  			HAL_Delay(100);
