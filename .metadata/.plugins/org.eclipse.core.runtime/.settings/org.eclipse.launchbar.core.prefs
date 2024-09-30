@@ -13,4 +13,4 @@ org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:lab4_LCD\ Debug/activeLaunchMod
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:lab4_LCD\ Debug/activeLaunchTarget=null\:---
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:lab5_ADC\ Debug/activeLaunchMode=debug
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:lab5_ADC\ Debug/activeLaunchTarget=null\:---
-org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:lab6_PWM\ Debug/activeLaunchMode=debug
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:lab6_PWM\ Debug/activeLaunchMode=run

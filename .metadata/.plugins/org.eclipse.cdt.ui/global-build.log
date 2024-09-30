@@ -47,3 +47,24 @@ Finished building: default.size.stdout
  
 Finished building: lab6_PWM.list
  
+14:33:23 **** Incremental Build of configuration Debug for project lab5_ADC ****
+make -j12 all 
+arm-none-eabi-size  lab5_ADC.elf 
+   text	   data	    bss	    dec	    hex	filename
+  31684	    472	   2272	  34428	   867c	lab5_ADC.elf
+Finished building: default.size.stdout
+ 
+14:46:35 **** Incremental Build of configuration Debug for project lab5_ADC ****
+make -j12 all 
+arm-none-eabi-size  lab5_ADC.elf 
+   text	   data	    bss	    dec	    hex	filename
+  31684	    472	   2272	  34428	   867c	lab5_ADC.elf
+Finished building: default.size.stdout
+ 
+14:49:22 **** Incremental Build of configuration Debug for project lab6_PWM ****
+make -j12 all 
+arm-none-eabi-size  lab6_PWM.elf 
+   text	   data	    bss	    dec	    hex	filename
+  18484	     16	   1728	  20228	   4f04	lab6_PWM.elf
+Finished building: default.size.stdout
+ 
