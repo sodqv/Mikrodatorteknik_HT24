@@ -1,7 +1,7 @@
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=win32
-configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:lab4_LCD Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:lab5_ADC Debug
+configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:lab5_ADC Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:lab6_PWM Debug
 eclipse.preferences.version=1
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:lab0_blinky\ Debug/activeLaunchMode=debug
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:lab0_blinky\ Debug/activeLaunchTarget=null\:---
@@ -13,3 +13,4 @@ org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:lab4_LCD\ Debug/activeLaunchMod
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:lab4_LCD\ Debug/activeLaunchTarget=null\:---
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:lab5_ADC\ Debug/activeLaunchMode=debug
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:lab5_ADC\ Debug/activeLaunchTarget=null\:---
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:lab6_PWM\ Debug/activeLaunchMode=debug

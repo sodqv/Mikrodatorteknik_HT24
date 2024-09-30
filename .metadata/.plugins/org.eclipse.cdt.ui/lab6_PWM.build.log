@@ -1,0 +1,17 @@
+14:32:13 **** Incremental Build of configuration Debug for project lab6_PWM ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "lab6_PWM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\LP\JTH\Mikrodatorteknik\Mikrodatorteknik_HT24\lab6_PWM\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="lab6_PWM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: lab6_PWM.elf
+ 
+arm-none-eabi-size  lab6_PWM.elf 
+arm-none-eabi-objdump -h -S lab6_PWM.elf  > "lab6_PWM.list"
+   text	   data	    bss	    dec	    hex	filename
+  18484	     16	   1728	  20228	   4f04	lab6_PWM.elf
+Finished building: default.size.stdout
+ 
+Finished building: lab6_PWM.list
+ 
+
+14:32:13 Build Finished. 0 errors, 0 warnings. (took 654ms)
+

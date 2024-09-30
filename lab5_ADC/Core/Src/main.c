@@ -54,14 +54,14 @@ UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 
-#define ADC_BUF_SIZE 4
+#define ADC_BUF_SIZE 3
 uint16_t adc_buffer[ADC_BUF_SIZE];
 int adc_buf_ix = 0;
 
 #define JOY_X_IX 0
 #define JOY_Y_IX 1
-#define LM35_IX 2
-#define PHOTORES_IX 3
+//#define LM35_IX 2
+#define PHOTORES_IX 2
 
 TextLCDType myLCD;
 
@@ -69,7 +69,7 @@ uint8_t callback_occured = 0;
 uint16_t max_volt = 4095;
 
 char volt[20];
-char temperature[20];
+//char temperature[20];
 char light[20];
 
 /* USER CODE END PV */
@@ -118,7 +118,7 @@ float normalize_12bit(uint16_t x)
 {
 	float normalized = ((float)x / max_volt);
 
-	sprintf(light, "%.2f", normalized);		// formats the normalized value into the x_volt string
+	sprintf(light, "%.2fL", normalized);		// formats the normalized value into the x_volt string
 
 	return normalized;
 }
@@ -129,12 +129,14 @@ float normalize_12bit_posneg(uint16_t x)
 {
 	float normalized = 2 * ((float)x / max_volt) - 1;
 
-	sprintf(volt, "%.2f", normalized);
+	sprintf(volt, "%+-.2f", normalized);
 
 	return normalized;
 }
 
 
+
+/*
 float lm35_to_celcius(uint16_t lm35_reading)
 {
 	//float volt = (lm35_reading * 5.0) / 4095.0;
@@ -145,7 +147,7 @@ float lm35_to_celcius(uint16_t lm35_reading)
 
 	return celcius;
 }
-
+*/
 
 
 /* USER CODE END 0 */
@@ -232,13 +234,13 @@ int main(void)
 	  			TextLCD_PutStr(&myLCD, volt);
 
 
-
+	  			/*
 	  			//temperature
 	  			lm35_to_celcius(adc_buffer[LM35_IX]);
 
 	  			TextLCD_Position(&myLCD, 10, 0);
 	  			TextLCD_PutStr(&myLCD, temperature);
-
+	  			*/
 
 
 	  			//light
@@ -341,7 +343,7 @@ static void MX_ADC1_Init(void)
   hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
   hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
   hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
-  hadc1.Init.NbrOfConversion = 4;
+  hadc1.Init.NbrOfConversion = 3;
   hadc1.Init.DMAContinuousRequests = DISABLE;
   hadc1.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
   if (HAL_ADC_Init(&hadc1) != HAL_OK)
@@ -370,17 +372,8 @@ static void MX_ADC1_Init(void)
 
   /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
   */
-  sConfig.Channel = ADC_CHANNEL_4;
-  sConfig.Rank = 3;
-  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
-  /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
-  */
   sConfig.Channel = ADC_CHANNEL_8;
-  sConfig.Rank = 4;
+  sConfig.Rank = 3;
   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
   {
     Error_Handler();
